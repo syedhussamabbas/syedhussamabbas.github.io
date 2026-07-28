@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Syed Hussam Abbas · Plant Molecular Biology</title>
+<meta name="description" content="Personal academic website of Syed Hussam Abbas, PhD candidate in plant molecular biology at MATE University, Hungary, studying heat stress, thermomemory, and nonsense-mediated decay in Arabidopsis.">
+<meta property="og:title" content="Syed Hussam Abbas · Plant Molecular Biology">
+<meta property="og:description" content="PhD candidate researching heat stress, thermomemory, and nonsense-mediated decay in Arabidopsis at MATE University, Hungary.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F2F3EC;
+    --bg-card: #E7E9DD;
+    --ink: #1C201A;
+    --ink-soft: #565A4D;
+    --rust: #B1552A;
+    --teal: #1E5A50;
+    --line: #D2D4C4;
+    --serif: 'Newsreader', serif;
+    --sans: 'Inter', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+    --maxw: 760px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  em { font-family: var(--serif); font-style: italic; }
+
+  /* Navigation, styled as an exon/intron gene diagram */
+  .site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(242,243,236,0.92);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--line);
+    padding: 0.9rem 1.5rem;
+  }
+  .nav-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .nav-mono-mark {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--teal);
+    margin-right: 0.6rem;
+    white-space: nowrap;
+  }
+  .exon {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0.4rem 0.6rem;
+    white-space: nowrap;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .exon:hover, .exon:focus-visible {
+    background: var(--teal);
+    color: var(--bg);
+    outline: 2px solid var(--teal);
+    outline-offset: 2px;
+  }
+  .intron { color: var(--line); flex-shrink: 0; }
+
+  main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; }
+
+  section { padding: 5rem 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  /* Hero */
+  #hero { padding-top: 3.5rem; }
+  .hero-head {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    margin-bottom: 1.4rem;
+  }
+  .portrait {
+    width: 152px;
+    height: 152px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 1px solid var(--line);
+    filter: saturate(0.92);
+  }
+  .hero-name {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(2.25rem, 6vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+  .hero-affiliation {
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    margin-bottom: 1.75rem;
+    line-height: 1.6;
+  }
+  .hero-statement {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.1rem, 2.4vw, 1.35rem);
+    color: var(--ink);
+    max-width: 42ch;
+    line-height: 1.5;
+    margin-bottom: 3rem;
+  }
+
+  /* Isoform diagram */
+  .isoform-diagram { margin-top: 2rem; }
+  .isoform-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem; }
+  .iso-label {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--ink-soft);
+    width: 5.4rem;
+    flex-shrink: 0;
+  }
+  .iso-track { display: flex; align-items: center; }
+  .exon-block { width: 44px; height: 13px; background: var(--ink); border-radius: 2px; flex-shrink: 0; }
+  .intron-line { color: var(--line); flex-shrink: 0; }
+  .intron-retained {
+    width: 44px;
+    height: 13px;
+    border-radius: 2px;
+    flex-shrink: 0;
+    background: repeating-linear-gradient(45deg, var(--rust), var(--rust) 3px, transparent 3px, transparent 6px);
+  }
+  .diagram-caption {
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    margin-top: 1.1rem;
+    font-style: italic;
+    max-width: 48ch;
+  }
+
+  /* About */
+  .about-text { font-size: 1.05rem; max-width: 64ch; }
+  .about-text p { margin-bottom: 1.1rem; }
+  .about-text p:last-child { margin-bottom: 0; }
+
+  /* Research */
+  .research-grid { display: flex; flex-direction: column; gap: 1.75rem; }
+  .research-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1.75rem;
+  }
+  .research-card-label {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--rust);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    display: block;
+  }
+  .research-card h3 {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+  .research-card p { font-size: 0.96rem; color: var(--ink-soft); }
+
+  /* Publications */
+  .pub-group { margin-bottom: 2.75rem; }
+  .pub-group:last-child { margin-bottom: 0; }
+  .pub-group h3 {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+  .pub-subhead {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+    margin: 1.4rem 0 0.5rem;
+  }
+  .pub-list { list-style: none; }
+  .pub-item {
+    padding: 1.1rem 0;
+    border-top: 1px solid var(--line);
+    font-size: 0.95rem;
+  }
+  .pub-item:first-of-type { border-top: none; padding-top: 0.3rem; }
+  .pub-item .self { font-weight: 700; }
+  .pub-item .venue { font-family: var(--serif); font-style: italic; }
+  .pub-item a { color: var(--teal); }
+  .pub-meta {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+    margin-top: 0.4rem;
+  }
+  .placeholder-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    background: var(--rust);
+    color: var(--bg);
+    padding: 0.12rem 0.4rem;
+    border-radius: 3px;
+    margin-left: 0.4rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* CV */
+  .cv-box {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 2.25rem;
+  }
+  .cv-box p { font-size: 0.98rem; color: var(--ink-soft); max-width: 55ch; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    background: var(--ink);
+    color: var(--bg);
+    text-decoration: none;
+    padding: 0.75rem 1.4rem;
+    border-radius: 4px;
+    margin-top: 1.25rem;
+    transition: background 0.15s ease;
+  }
+  .btn:hover, .btn:focus-visible { background: var(--teal); outline: 2px solid var(--teal); outline-offset: 2px; }
+
+  /* Contact */
+  .contact-list { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; margin-top: 0.5rem; }
+  .contact-list a {
+    font-family: var(--mono);
+    font-size: 0.9rem;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2px;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
+  .contact-list a:hover, .contact-list a:focus-visible { color: var(--teal); border-color: var(--teal); outline: none; }
+
+  footer {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 3.5rem;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+  }
+
+  /* Scroll reveal */
+  .reveal { opacity: 0; transform: translateY(14px); }
+  .reveal.in-view { opacity: 1; transform: translateY(0); transition: opacity 0.6s ease, transform 0.6s ease; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  @media (max-width: 640px) {
+    section { padding: 3.25rem 0; }
+    .hero-head {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.1rem;
+    }
+    .portrait { width: 118px; height: 118px; }
+    .iso-label { width: 4rem; font-size: 0.6rem; }
+    .exon-block { width: 30px; }
+    .hero-affiliation br { display: block; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <nav class="nav-inner" aria-label="Section navigation">
+    <span class="nav-mono-mark">SHA</span>
+    <a href="#about" class="exon">ABOUT</a>
+    <svg class="intron" width="22" height="14" viewBox="0 0 22 14" aria-hidden="true"><path d="M1,11 L11,2 L21,11" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    <a href="#research" class="exon">RESEARCH</a>
+    <svg class="intron" width="22" height="14" viewBox="0 0 22 14" aria-hidden="true"><path d="M1,11 L11,2 L21,11" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    <a href="#publications" class="exon">PUBLICATIONS</a>
+    <svg class="intron" width="22" height="14" viewBox="0 0 22 14" aria-hidden="true"><path d="M1,11 L11,2 L21,11" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    <a href="#cv" class="exon">CV</a>
+    <svg class="intron" width="22" height="14" viewBox="0 0 22 14" aria-hidden="true"><path d="M1,11 L11,2 L21,11" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    <a href="#contact" class="exon">CONTACT</a>
+  </nav>
+</header>
+
+<main>
+
+  <section id="hero">
+    <span class="eyebrow">Plant Molecular Biologist · RNA Regulation, Stress Signalling &amp; Heat Stress Memory</span>
+    <div class="hero-head">
+      <img class="portrait" src="./portrait.jpg" width="450" height="450" alt="Portrait of Syed Hussam Abbas">
+      <h1 class="hero-name">Syed Hussam<br>Abbas</h1>
+    </div>
+    <p class="hero-affiliation">
+      Plant Stress Biology Group, Genetics and Biotechnology Institute<br>
+      MATE University (Hungarian University of Agriculture and Life Sciences)<br>
+      Gödöllő, Hungary
+    </p>
+    <p class="hero-statement">I study how alternative splicing and nonsense-mediated decay work together to control heat shock factor activity as <em>Arabidopsis</em> plants heat up, cool down, and remember the stress days later.</p>
+
+    <div class="isoform-diagram">
+      <div class="isoform-row">
+        <span class="iso-label">HSFA2-I</span>
+        <div class="iso-track">
+          <div class="exon-block"></div>
+          <svg class="intron-line" width="28" height="14" viewBox="0 0 28 14" aria-hidden="true"><path d="M1,11 L14,2 L27,11" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+          <div class="exon-block"></div>
+          <svg class="intron-line" width="28" height="14" viewBox="0 0 28 14" aria-hidden="true"><path d="M1,11 L14,2 L27,11" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+          <div class="exon-block"></div>
+        </div>
+      </div>
+      <div class="isoform-row">
+        <span class="iso-label">HSFA2-II</span>
+        <div class="iso-track">
+          <div class="exon-block"></div>
+          <svg class="intron-line" width="72" height="20" viewBox="0 0 72 20" aria-hidden="true"><path d="M1,17 L36,2 L71,17" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+          <div class="exon-block"></div>
+        </div>
+      </div>
+      <div class="isoform-row">
+        <span class="iso-label">HSFA2-III</span>
+        <div class="iso-track">
+          <div class="exon-block"></div>
+          <div class="intron-retained" title="Retained intron"></div>
+          <div class="exon-block"></div>
+          <svg class="intron-line" width="28" height="14" viewBox="0 0 28 14" aria-hidden="true"><path d="M1,11 L14,2 L27,11" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
+          <div class="exon-block"></div>
+        </div>
+      </div>
+      <p class="diagram-caption">A simplified illustration of alternative splicing in HSFA2, the process at the center of my thesis work. The rust block marks a retained intron, the kind of feature that can flag a transcript for nonsense-mediated decay.</p>
+    </div>
+  </section>
+
+  <section id="about" class="reveal">
+    <span class="eyebrow">About</span>
+    <div class="about-text">
+      <p>I'm a final-year PhD candidate in the Plant Stress Biology Group at MATE University (Hungarian University of Agriculture and Life Sciences) in Gödöllő, Hungary, working under Dr. Tibor Csorba. My thesis, "Post-transcriptional regulation of heat stress response and thermomemory by nonsense-mediated decay in <em>Arabidopsis thaliana</em>," looks at how plants use a post-transcriptional quality control pathway to shape their response to heat stress and their memory of that stress once temperatures return to normal.</p>
+      <p>My broader interests cover RNA surveillance mechanisms, transcriptome plasticity under abiotic stress, and the interplay between transcriptional and post-transcriptional quality control, including how these mechanisms extend to hormone signalling components such as brassinosteroid pathway transcripts under thermal stress.</p>
+      <p>Before Hungary, I completed my MSc in Plant Breeding and Genetics at the University of Agriculture, Faisalabad, Pakistan. I'm defending my PhD by the end of 2026 and am currently looking for a postdoctoral position starting around March 2027.</p>
+    </div>
+  </section>
+
+  <section id="research" class="reveal">
+    <span class="eyebrow">Research</span>
+    <div class="research-grid">
+      <div class="research-card">
+        <span class="research-card-label">Isoform I</span>
+        <h3>AS-NMD and HSFA2 isoform dynamics</h3>
+        <p>Heat stress triggers alternative splicing of HSFA2, the master regulator of the heat shock response, producing several mRNA isoforms. I'm mapping how nonsense-mediated decay governs which of these isoforms accumulate during thermal acclimation, and how that shapes the heat shock response over time.</p>
+      </div>
+      <div class="research-card">
+        <span class="research-card-label">Isoform II</span>
+        <h3>NMD as a pro-recovery factor</h3>
+        <p>My data point to NMD supporting recovery from heat stress through a pathway that runs independently of both HsfA2 and HsfA3. This suggests the decay machinery does more than clear out faulty transcripts. It actively helps the plant reset once the stress has passed.</p>
+      </div>
+      <div class="research-card">
+        <span class="research-card-label">Isoform III</span>
+        <h3>Isoform accumulation in NMD-deficient plants</h3>
+        <p>In NMD-deficient mutant backgrounds, I see distinct patterns of isoform accumulation that current models of AS-NMD don't fully explain, pointing to additional layers of regulation still waiting to be described.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications" class="reveal">
+    <span class="eyebrow">Publications</span>
+
+    <div class="pub-group">
+      <h3>Journal articles</h3>
+      <p class="pub-subhead">Under review</p>
+      <ul class="pub-list">
+        <li class="pub-item">
+          <span class="self">Abbas, S.H.</span>, Darkó, É., Erős, T., Csorba, T. (2026). Nonsense-mediated decay promotes heat stress recovery independently of HsfA2/HsfA3 in <em>Arabidopsis</em>.
+          <span class="pub-meta">Manuscript under review</span>
+        </li>
+      </ul>
+      <p class="pub-subhead">Published</p>
+      <ul class="pub-list">
+        <li class="pub-item">
+          Nyikó, T., Gyula, P., Ráth, S., Sós-Hegedűs, A., Csorba, T., <span class="self">Abbas, S.H.</span>, Bóka, K., Pettkó-Szandtner, A., Móricz, Á.M., Molnár, B.P., Erdei, A.L., Szittya, G. (2025). Increased DNA methylation 3 forms a potential chromatin remodelling complex with Hairplus to regulate DNA methylation and trichome development in tomato. <span class="venue">The Plant Journal</span>, 121(6), e70085.
+          <span class="pub-meta"><a href="https://doi.org/10.1111/tpj.70085" target="_blank" rel="noopener">doi.org/10.1111/tpj.70085</a></span>
+        </li>
+        <li class="pub-item">
+          Szaker, H.M., Verma, R., Szádeczky-Kardoss, I., Gál, N., <span class="self">Abbas, S.H.</span>, Darkó, É., Pettkó-Szandtner, A., Silhavy, D., Csorba, T. (2025). Transcription fidelity and control of alternative splicing contribute to heat stress survival in Arabidopsis. <span class="venue">The Plant Cell</span>, 37(11), koaf256.
+          <span class="pub-meta"><a href="https://doi.org/10.1093/plcell/koaf256" target="_blank" rel="noopener">doi.org/10.1093/plcell/koaf256</a></span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="pub-group">
+      <h3>Book chapters</h3>
+      <ul class="pub-list">
+        <li class="pub-item">
+          Singh, K., <span class="self">Abbas, S.H.</span>, Singh, S., Iqbal, N., Kocsy, G., Pérez-Pérez, J.M., Riyazuddin, R. (2025). Deciphering the Plants' Response to Flood-Induced Hypoxia and Anoxia at the Molecular Level. In: Riyazuddin, R., Gupta, R., Ramteke, P.W., Sayyed, R. (eds) <span class="venue">Plant Flooding</span>. Plant in Challenging Environments, vol 6. Springer, Cham, pp. 93-112.
+          <span class="pub-meta"><a href="https://doi.org/10.1007/978-3-031-83068-6_5" target="_blank" rel="noopener">doi.org/10.1007/978-3-031-83068-6_5</a></span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="pub-group">
+      <h3>Conference abstracts</h3>
+      <ul class="pub-list">
+        <li class="pub-item">
+          Title to be added.<span class="placeholder-tag">add details</span>
+          <span class="pub-meta">de.NBI Summer School, poster</span>
+        </li>
+        <li class="pub-item">
+          Title to be added.<span class="placeholder-tag">add details</span>
+          <span class="pub-meta">COST Action CA22157 ReCrop Workshop, CEITEC, poster</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="cv" class="reveal">
+    <span class="eyebrow">CV</span>
+    <div class="cv-box">
+      <p>The full CV covers research training, teaching, and outreach experience in more detail than fits here.</p>
+      <a class="btn" href="./cv.pdf" download>Download CV (PDF) &#8595;</a>
+    </div>
+  </section>
+
+  <section id="contact" class="reveal">
+    <span class="eyebrow">Contact</span>
+    <div class="contact-list">
+      <a href="mailto:abbas.syed.hussam@phd.uni-mate.hu">abbas.syed.hussam@phd.uni-mate.hu</a>
+      <a href="https://www.linkedin.com/in/syed-hussam-abbas/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://scholar.google.com/citations?user=6hijnwQAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+      <a href="https://orcid.org/0009-0003-0017-0157" target="_blank" rel="noopener">ORCID</a>
+      <a href="https://www.researchgate.net/profile/Syed-Abbas-33" target="_blank" rel="noopener">ResearchGate</a>
+      <a href="https://arena.eudres.eu/BoR/researcher.php?researcherid=1656" target="_blank" rel="noopener">EUDRES</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>&copy; 2026 Syed Hussam Abbas</footer>
+
+<script>
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(function (el) { el.classList.add('in-view'); });
+      return;
+    }
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(function (el) { obs.observe(el); });
+  })();
+</script>
+
+</body>
+</html>
