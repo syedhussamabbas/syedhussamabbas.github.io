@@ -129,9 +129,10 @@
   .hero-name {
     font-family: var(--serif);
     font-weight: 600;
-    font-size: clamp(2.25rem, 6vw, 4rem);
-    line-height: 1.05;
+    font-size: clamp(1.75rem, 5.2vw, 3.05rem);
+    line-height: 1.1;
     letter-spacing: -0.01em;
+    white-space: nowrap;
   }
   .hero-affiliation {
     font-family: var(--mono);
@@ -145,9 +146,13 @@
     font-style: italic;
     font-size: clamp(1.1rem, 2.4vw, 1.35rem);
     color: var(--ink);
-    max-width: 42ch;
-    line-height: 1.5;
+    max-width: 48ch;
+    line-height: 1.55;
     margin-bottom: 3rem;
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
   }
 
   /* Isoform diagram */
@@ -182,6 +187,33 @@
   .about-text { font-size: 1.05rem; max-width: 64ch; }
   .about-text p { margin-bottom: 1.1rem; }
   .about-text p:last-child { margin-bottom: 0; }
+  .interest-list {
+    list-style: none;
+    margin: -0.4rem 0 1.4rem;
+  }
+  .interest-list li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .interest-list li:last-child { margin-bottom: 0; }
+  .interest-list li::before {
+    content: "\2022";
+    position: absolute;
+    left: 0;
+    top: -0.05rem;
+    color: var(--rust);
+    font-weight: 700;
+  }
+  .publish-note {
+    font-size: 0.88rem !important;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line);
+    padding-top: 1rem;
+  }
+  .publish-note a { color: var(--teal); }
 
   /* Research */
   .research-grid { display: flex; flex-direction: column; gap: 1.75rem; }
@@ -202,11 +234,33 @@
   }
   .research-card h3 {
     font-family: var(--serif);
-    font-size: 1.25rem;
+    font-size: 1.18rem;
     font-weight: 600;
-    margin-bottom: 0.6rem;
+    line-height: 1.3;
+    margin-bottom: 0.45rem;
   }
-  .research-card p { font-size: 0.96rem; color: var(--ink-soft); }
+  .research-card p { font-size: 0.96rem; color: var(--ink-soft); margin-bottom: 0.8rem; }
+  .research-card p:last-child { margin-bottom: 0; }
+  .research-venue {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .research-venue .venue { font-family: var(--serif); font-style: italic; font-size: 0.85rem; }
+  .pub-link {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--teal);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 1px;
+    margin-bottom: 1rem;
+  }
+  .pub-link:hover, .pub-link:focus-visible { border-color: var(--teal); outline: none; }
 
   /* Publications */
   .pub-group { margin-bottom: 2.75rem; }
@@ -241,17 +295,6 @@
     font-size: 0.75rem;
     color: var(--ink-soft);
     margin-top: 0.4rem;
-  }
-  .placeholder-tag {
-    display: inline-block;
-    font-family: var(--mono);
-    font-size: 0.65rem;
-    background: var(--rust);
-    color: var(--bg);
-    padding: 0.12rem 0.4rem;
-    border-radius: 3px;
-    margin-left: 0.4rem;
-    letter-spacing: 0.04em;
   }
 
   /* CV */
@@ -315,6 +358,8 @@
       gap: 1.1rem;
     }
     .portrait { width: 118px; height: 118px; }
+    .hero-name { font-size: clamp(1.6rem, 8vw, 2.1rem); }
+    .hero-statement { text-align: left; hyphens: none; -webkit-hyphens: none; }
     .iso-label { width: 4rem; font-size: 0.6rem; }
     .exon-block { width: 30px; }
     .hero-affiliation br { display: block; }
@@ -325,7 +370,7 @@
 
 <header class="site-nav">
   <nav class="nav-inner" aria-label="Section navigation">
-    <span class="nav-mono-mark">SHA</span>
+    <span class="nav-mono-mark">Abbas</span>
     <a href="#about" class="exon">ABOUT</a>
     <svg class="intron" width="22" height="14" viewBox="0 0 22 14" aria-hidden="true"><path d="M1,11 L11,2 L21,11" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
     <a href="#research" class="exon">RESEARCH</a>
@@ -344,7 +389,7 @@
     <span class="eyebrow">Plant Molecular Biologist · RNA Regulation, Stress Signalling &amp; Heat Stress Memory</span>
     <div class="hero-head">
       <img class="portrait" src="./portrait.jpg" width="450" height="450" alt="Portrait of Syed Hussam Abbas">
-      <h1 class="hero-name">Syed Hussam<br>Abbas</h1>
+      <h1 class="hero-name">Syed Hussam Abbas</h1>
     </div>
     <p class="hero-affiliation">
       Plant Stress Biology Group, Genetics and Biotechnology Institute<br>
@@ -382,37 +427,76 @@
           <div class="exon-block"></div>
         </div>
       </div>
-      <p class="diagram-caption">A simplified illustration of alternative splicing in HSFA2, the process at the center of my thesis work. The rust block marks a retained intron, the kind of feature that can flag a transcript for nonsense-mediated decay.</p>
+      <p class="diagram-caption">A simplified illustration of alternative splicing in HSFA2, the process at the centre of my thesis work. The rust block marks a retained intron, the kind of feature that can flag a transcript for nonsense-mediated decay.</p>
     </div>
   </section>
 
   <section id="about" class="reveal">
     <span class="eyebrow">About</span>
     <div class="about-text">
-      <p>I'm a final-year PhD candidate in the Plant Stress Biology Group at MATE University (Hungarian University of Agriculture and Life Sciences) in Gödöllő, Hungary, working under Dr. Tibor Csorba. My thesis, "Post-transcriptional regulation of heat stress response and thermomemory by nonsense-mediated decay in <em>Arabidopsis thaliana</em>," looks at how plants use a post-transcriptional quality control pathway to shape their response to heat stress and their memory of that stress once temperatures return to normal.</p>
-      <p>My broader interests cover RNA surveillance mechanisms, transcriptome plasticity under abiotic stress, and the interplay between transcriptional and post-transcriptional quality control, including how these mechanisms extend to hormone signalling components such as brassinosteroid pathway transcripts under thermal stress.</p>
-      <p>Before Hungary, I completed my MSc in Plant Breeding and Genetics at the University of Agriculture, Faisalabad, Pakistan. I'm defending my PhD by the end of 2026 and am currently looking for a postdoctoral position starting around March 2027.</p>
+      <p>I'm a Plant Molecular Biologist with 4+ years of experience in post-transcriptional gene regulation, RNA biology and plant stress responses. I'm currently working with Dr. Tibor Csorba in the Plant Stress Biology Group, Genetics and Biotechnology Institute, MATE University in G&#246;d&#246;ll&#337;, Hungary. My PhD work sits at the intersection of RNA surveillance (NMD pathway), alternative splicing and heat stress memory in plants.</p>
+
+      <p>My core research interests include:</p>
+      <ul class="interest-list">
+        <li>Post-transcriptional and translational regulation: alternative splicing, NMD pathway and RNA surveillance</li>
+        <li>Heat stress transcription factors (HSFA2, HSFA3) and thermomemory</li>
+        <li>Co-transcriptional regulation and transcription elongation fidelity</li>
+        <li>Abiotic stress signalling and molecular responses in plant systems</li>
+        <li>Autophagy and protein quality control: selective degradation and proteostasis during stress recovery</li>
+        <li>Post-translational modifications (PTMs) in stress regulatory networks</li>
+      </ul>
+
+      <p>My work has been published in <span class="venue">The Plant Cell</span> and <span class="venue">The Plant Journal</span> on transcription fidelity, stress responses, and gene regulation in plants, with additional first-author research work submitted to the <span class="venue">Journal of Experimental Botany</span>.</p>
+
+      <p>Beyond academia, the regulatory principles I work on (including RNA quality control, stress-responsive gene networks, isoform-level switches) translate directly into questions relevant to crop resilience, trait engineering and RNA-based biotechnology.</p>
+
+      <p>I'm currently seeking postdoctoral opportunities in RNA biology, plant stress responses, or gene regulation, where I can continue pushing at the interface of transcriptomics, molecular genetics and stress biology.</p>
+
+      <p>I believe science, at its best, is service to humankind! :)</p>
+
+      <p class="publish-note">I publish as Syed Hussam Abbas (ORCID <a href="https://orcid.org/0009-0003-0017-0157" target="_blank" rel="noopener">0009-0003-0017-0157</a>).</p>
     </div>
   </section>
 
   <section id="research" class="reveal">
     <span class="eyebrow">Research</span>
     <div class="research-grid">
+
       <div class="research-card">
-        <span class="research-card-label">Isoform I</span>
-        <h3>AS-NMD and HSFA2 isoform dynamics</h3>
-        <p>Heat stress triggers alternative splicing of HSFA2, the master regulator of the heat shock response, producing several mRNA isoforms. I'm mapping how nonsense-mediated decay governs which of these isoforms accumulate during thermal acclimation, and how that shapes the heat shock response over time.</p>
+        <span class="research-card-label">PhD thesis &middot; manuscript submitted</span>
+        <h3>NMD-dependent control of HSFA2 isoforms in heat stress memory</h3>
+        <span class="research-venue"><span class="venue">Journal of Experimental Botany</span> &middot; Submitted 2026</span>
+        <p>Heat stress triggers alternative splicing of HSFA2, the master regulator of the heat shock response, generating several mRNA isoforms whose balance shifts through acclimation and recovery. My thesis maps how nonsense-mediated decay governs which of those isoforms accumulate, and what that means for how a plant remembers a heat event days after it ends.</p>
+        <p>The central finding is that NMD promotes recovery from heat stress through a route independent of both HsfA2 and HsfA3, so the decay machinery does more than clear faulty transcripts. It actively helps the plant reset. In NMD-deficient backgrounds the isoform patterns depart from what current AS-NMD models predict, pointing to further layers of regulation still to be described.</p>
       </div>
+
       <div class="research-card">
-        <span class="research-card-label">Isoform II</span>
-        <h3>NMD as a pro-recovery factor</h3>
-        <p>My data point to NMD supporting recovery from heat stress through a pathway that runs independently of both HsfA2 and HsfA3. This suggests the decay machinery does more than clear out faulty transcripts. It actively helps the plant reset once the stress has passed.</p>
+        <span class="research-card-label">Journal article</span>
+        <h3>Transcription fidelity and control of alternative splicing contribute to heat stress survival in <em>Arabidopsis</em></h3>
+        <span class="research-venue"><span class="venue">The Plant Cell</span> &middot; 28 October 2025</span>
+        <a class="pub-link" href="https://doi.org/10.1093/plcell/koaf256" target="_blank" rel="noopener">Show publication &#8594;</a>
+        <p>We explored how heat stress disrupts transcription fidelity and alternative splicing in <em>Arabidopsis</em>, leading to a surge in transcription errors. We also uncovered how key transcription elongation factors such as TFIIS, together with the NMD pathway, work to correct these mistakes and keep gene expression accurate.</p>
+        <p>Together these mechanisms form an RNA quality control system that plants rely on when temperatures rise, giving a clearer picture of how they stay resilient in a warming world.</p>
       </div>
+
       <div class="research-card">
-        <span class="research-card-label">Isoform III</span>
-        <h3>Isoform accumulation in NMD-deficient plants</h3>
-        <p>In NMD-deficient mutant backgrounds, I see distinct patterns of isoform accumulation that current models of AS-NMD don't fully explain, pointing to additional layers of regulation still waiting to be described.</p>
+        <span class="research-card-label">Book chapter</span>
+        <h3>Deciphering the Plants' Response to Flood-Induced Hypoxia and Anoxia at the Molecular Level</h3>
+        <span class="research-venue">Springer, Cham &middot; 24 April 2025</span>
+        <a class="pub-link" href="https://doi.org/10.1007/978-3-031-83068-6_5" target="_blank" rel="noopener">Show publication &#8594;</a>
+        <p>This chapter examines how flooding, made more frequent by climate change, affects plant health. It focuses on the hormonal and molecular signalling that underpins flood tolerance, particularly ethylene and reactive oxygen species (ROS).</p>
+        <p>Dissecting these pathways clarifies how plants manage low-oxygen stress and points towards breeding or engineering flood-tolerant crops, which matters directly for food security in a changing climate.</p>
       </div>
+
+      <div class="research-card">
+        <span class="research-card-label">Journal article</span>
+        <h3>INCREASED DNA METHYLATION 3 forms a potential chromatin remodelling complex with HAIRPLUS to regulate DNA methylation and trichome development in tomato</h3>
+        <span class="research-venue"><span class="venue">The Plant Journal</span> &middot; 23 March 2025</span>
+        <a class="pub-link" href="https://doi.org/10.1111/tpj.70085" target="_blank" rel="noopener">Show publication &#8594;</a>
+        <p>Our findings establish the role of SlIDM3, a regulator of DNA methylation in tomato. Genome-edited <em>slidm3</em> mutants show a hairy phenotype with increased glandular trichomes, closely resembling the <em>hairplus</em> (<em>hap</em>) mutant.</p>
+        <p>Protein purification and methylation analysis revealed that SlIDM3 forms a chromatin remodelling complex with HAP, shaping methylation patterns and controlling trichome development. These insights into epigenetic regulation open routes for crop improvement.</p>
+      </div>
+
     </div>
   </section>
 
@@ -421,22 +505,22 @@
 
     <div class="pub-group">
       <h3>Journal articles</h3>
-      <p class="pub-subhead">Under review</p>
+      <p class="pub-subhead">Submitted</p>
       <ul class="pub-list">
         <li class="pub-item">
-          <span class="self">Abbas, S.H.</span>, Darkó, É., Erős, T., Csorba, T. (2026). Nonsense-mediated decay promotes heat stress recovery independently of HsfA2/HsfA3 in <em>Arabidopsis</em>.
-          <span class="pub-meta">Manuscript under review</span>
+          <span class="self">Abbas, S.H.</span>, Dark&#243;, &#201;., Er&#337;s, T., Csorba, T. (2026). Nonsense-mediated decay promotes heat stress recovery independently of HsfA2/HsfA3 in <em>Arabidopsis</em>.
+          <span class="pub-meta">Manuscript submitted to the <span class="venue">Journal of Experimental Botany</span></span>
         </li>
       </ul>
       <p class="pub-subhead">Published</p>
       <ul class="pub-list">
         <li class="pub-item">
-          Nyikó, T., Gyula, P., Ráth, S., Sós-Hegedűs, A., Csorba, T., <span class="self">Abbas, S.H.</span>, Bóka, K., Pettkó-Szandtner, A., Móricz, Á.M., Molnár, B.P., Erdei, A.L., Szittya, G. (2025). Increased DNA methylation 3 forms a potential chromatin remodelling complex with Hairplus to regulate DNA methylation and trichome development in tomato. <span class="venue">The Plant Journal</span>, 121(6), e70085.
-          <span class="pub-meta"><a href="https://doi.org/10.1111/tpj.70085" target="_blank" rel="noopener">doi.org/10.1111/tpj.70085</a></span>
+          Szaker, H.M.*, Verma, R.*, Sz&#225;deczky-Kardoss, I., G&#225;l, N., <span class="self">Abbas, S.H.</span>, Dark&#243;, &#201;., Pettk&#243;-Szandtner, A., Silhavy, D., Csorba, T. (2025). Transcription fidelity and control of alternative splicing contribute to heat stress survival in <em>Arabidopsis</em>. <span class="venue">The Plant Cell</span>, 37(11), koaf256.
+          <span class="pub-meta"><a href="https://doi.org/10.1093/plcell/koaf256" target="_blank" rel="noopener">doi.org/10.1093/plcell/koaf256</a></span>
         </li>
         <li class="pub-item">
-          Szaker, H.M., Verma, R., Szádeczky-Kardoss, I., Gál, N., <span class="self">Abbas, S.H.</span>, Darkó, É., Pettkó-Szandtner, A., Silhavy, D., Csorba, T. (2025). Transcription fidelity and control of alternative splicing contribute to heat stress survival in Arabidopsis. <span class="venue">The Plant Cell</span>, 37(11), koaf256.
-          <span class="pub-meta"><a href="https://doi.org/10.1093/plcell/koaf256" target="_blank" rel="noopener">doi.org/10.1093/plcell/koaf256</a></span>
+          Nyik&#243;, T., Gyula, P., R&#225;th, S., S&#243;s-Heged&#369;s, A., Csorba, T., <span class="self">Abbas, S.H.</span>, B&#243;ka, K., Pettk&#243;-Szandtner, A., M&#243;ricz, &#193;.M., Moln&#225;r, B.P., Erdei, A.L., Szittya, G. (2025). INCREASED DNA METHYLATION 3 forms a potential chromatin remodelling complex with HAIRPLUS to regulate DNA methylation and trichome development in tomato. <span class="venue">The Plant Journal</span>, 121, e70085.
+          <span class="pub-meta"><a href="https://doi.org/10.1111/tpj.70085" target="_blank" rel="noopener">doi.org/10.1111/tpj.70085</a></span>
         </li>
       </ul>
     </div>
@@ -445,7 +529,7 @@
       <h3>Book chapters</h3>
       <ul class="pub-list">
         <li class="pub-item">
-          Singh, K., <span class="self">Abbas, S.H.</span>, Singh, S., Iqbal, N., Kocsy, G., Pérez-Pérez, J.M., Riyazuddin, R. (2025). Deciphering the Plants' Response to Flood-Induced Hypoxia and Anoxia at the Molecular Level. In: Riyazuddin, R., Gupta, R., Ramteke, P.W., Sayyed, R. (eds) <span class="venue">Plant Flooding</span>. Plant in Challenging Environments, vol 6. Springer, Cham, pp. 93-112.
+          Singh, K., <span class="self">Abbas, S.H.</span>, Singh, S., Iqbal, N., Kocsy, G., P&#233;rez-P&#233;rez, J.M., Riyazuddin, R. (2025). Deciphering the Plants' Response to Flood-Induced Hypoxia and Anoxia at the Molecular Level. In: Riyazuddin, R., Gupta, R., Ramteke, P.W., Sayyed, R. (eds) <span class="venue">Plant Flooding</span>. Plant in Challenging Environments, vol 6. Springer, Cham, pp. 93-112.
           <span class="pub-meta"><a href="https://doi.org/10.1007/978-3-031-83068-6_5" target="_blank" rel="noopener">doi.org/10.1007/978-3-031-83068-6_5</a></span>
         </li>
       </ul>
@@ -455,12 +539,40 @@
       <h3>Conference abstracts</h3>
       <ul class="pub-list">
         <li class="pub-item">
-          Title to be added.<span class="placeholder-tag">add details</span>
-          <span class="pub-meta">de.NBI Summer School, poster</span>
+          <span class="self">Abbas, S.H.</span>, Ahmed, I., Szaker, H.M., Csorba, T. <em>TFIIS</em> and <em>IWS1</em> orchestrate transcriptional homeostasis under heat stress in plants.
+          <span class="pub-meta">Poster P17 &middot; RECROP-PrimeSeedPower GenNext Training School: Building climate-resilient crops through stress priming and seed biology &middot; Chania, Greece &middot; 21-23 April 2026</span>
         </li>
         <li class="pub-item">
-          Title to be added.<span class="placeholder-tag">add details</span>
-          <span class="pub-meta">COST Action CA22157 ReCrop Workshop, CEITEC, poster</span>
+          <span class="self">Abbas, S.H.</span>, Ahmed, I., Verma, R., Szaker, H.M., Csorba, T. Functional coupling of transcription elongation factors <em>TFIIS</em> and <em>IWS1</em> preserves RNA homeostasis under heat stress in <em>Arabidopsis thaliana</em>.
+          <span class="pub-meta">Poster P-01 &middot; EpiSeedLink International Conference 2026: Priming, Stress and Epigenetic Memory &middot; Amsterdam, The Netherlands &middot; 9-10 February 2026</span>
+        </li>
+        <li class="pub-item">
+          <span class="self">Abbas, S.H.</span>, Ahmed, I., Szaker, H.M., Csorba, T. Interplay between RNAPII transcription and co-transcriptional RNA processing during heat stress in plants.
+          <span class="pub-meta">International Conference on Molecular Biology: Current Aspects and Prospects (ICMB2025) &middot; Cluj-Napoca, Romania &middot; 4-7 November 2025</span>
+        </li>
+        <li class="pub-item">
+          <span class="self">Abbas, S.H.</span>, Ahmed, I., G&#225;l, N., Szaker, H.M., Csorba, T. Plant genetics under heat stress: building a climate-resilient future.
+          <span class="pub-meta">R65 &middot; 14th Students' Research Conference on Society, Technology and Solutions, E3UDRES2 Science Festival, Vidzeme University of Applied Sciences &middot; Valmiera, Latvia &middot; 15-17 October 2025</span>
+        </li>
+        <li class="pub-item">
+          Szaker, H.M., Verma, R., Sz&#225;deczky-Kardoss, I., <span class="self">Abbas, S.H.</span>, Pettk&#243;-Szandtner, A., Silhavy, D., Csorba, T. Transcription fidelity control contributes to heat stress survival in <em>A. thaliana</em>.
+          <span class="pub-meta">Oral O-18 &middot; Plant Biology Europe 2025 &middot; Budapest, Hungary &middot; 26-28 June 2025 &middot; ISBN 978-615-6833-02-0 &middot; <a href="https://pbe2025-budapest.org/PBE2025_book_of_abstracts.pdf" target="_blank" rel="noopener">book of abstracts</a></span>
+        </li>
+        <li class="pub-item">
+          Szaker, H.M., Verma, R., Sz&#225;deczky-Kardoss, I., <span class="self">Abbas, S.H.</span>, Pettk&#243;-Szandtner, A., Silhavy, D., Csorba, T. Transcription fidelity safeguarding contributes to heat stress survival in <em>A. thaliana</em>.
+          <span class="pub-meta">Poster P181 &middot; International Conference on Arabidopsis Research 2025 &middot; Ghent, Belgium &middot; 16-20 June 2025</span>
+        </li>
+        <li class="pub-item">
+          Szaker, H.M., Verma, R., Sz&#225;deczky-Kardoss, I., <span class="self">Abbas, S.H.</span>, Pettk&#243;-Szandtner, A., Silhavy, D., Csorba, T. Transcription fidelity is needed for development and heat stress survival in <em>Arabidopsis</em>.
+          <span class="pub-meta">Poster P80 &middot; 19th Microsymposium on RNA Biology &middot; Vienna BioCenter, Vienna, Austria &middot; 7-9 May 2025</span>
+        </li>
+        <li class="pub-item">
+          Ahmed, I., Verma, R., Sz&#225;deczky-Kardoss, I., Szaker, H.M., <span class="self">Abbas, S.H.</span>, Csorba, T. Decoding the role of TFIIS in plant resilience to heat stress.
+          <span class="pub-meta">GBI Napok Miniconference, Genetics and Biotechnology Institute, MATE University &middot; G&#246;d&#246;ll&#337;, Hungary &middot; 10-11 December 2024</span>
+        </li>
+        <li class="pub-item">
+          Szaker, H.M., Verma, R., Sz&#225;deczky-Kardoss, I., <span class="self">Abbas, S.H.</span>, Pettk&#243;-Szandtner, A., Silhavy, D., Csorba, T. Transcriptome fidelity aids development and heat stress response in <em>Arabidopsis</em>.
+          <span class="pub-meta">XXIII Genetikai M&#369;helyek Magyarorsz&#225;gon Conference &middot; Szeged, Hungary &middot; 6 September 2024</span>
         </li>
       </ul>
     </div>
