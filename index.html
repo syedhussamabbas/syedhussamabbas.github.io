@@ -67,12 +67,18 @@
   .nav-inner::-webkit-scrollbar { display: none; }
   .nav-mono-mark {
     font-family: var(--mono);
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     font-weight: 500;
     color: var(--teal);
-    margin-right: 0.6rem;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    margin-right: 0.75rem;
+    padding-right: 0.75rem;
+    border-right: 1px solid var(--line);
     white-space: nowrap;
+    transition: opacity 0.15s ease;
   }
+  .nav-mono-mark:hover, .nav-mono-mark:focus-visible { opacity: 0.65; outline: none; }
   .exon {
     font-family: var(--mono);
     font-size: 0.68rem;
@@ -92,6 +98,12 @@
     outline: 2px solid var(--teal);
     outline-offset: 2px;
   }
+  .exon.active {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
+  .exon.active:hover { background: var(--teal); border-color: var(--teal); }
   .intron { color: var(--line); flex-shrink: 0; }
 
   main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; }
@@ -207,13 +219,6 @@
     color: var(--rust);
     font-weight: 700;
   }
-  .publish-note {
-    font-size: 0.88rem !important;
-    color: var(--ink-soft);
-    border-top: 1px solid var(--line);
-    padding-top: 1rem;
-  }
-  .publish-note a { color: var(--teal); }
 
   /* Research */
   .research-grid { display: flex; flex-direction: column; gap: 1.75rem; }
@@ -314,17 +319,27 @@
   .btn:hover, .btn:focus-visible { background: var(--teal); outline: 2px solid var(--teal); outline-offset: 2px; }
 
   /* Contact */
-  .contact-list { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; margin-top: 0.5rem; }
-  .contact-list a {
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem 1.9rem;
+    margin-top: 0.5rem;
+  }
+  .contact-profiles { margin-top: 1.1rem; }
+  .clink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
     font-family: var(--mono);
-    font-size: 0.9rem;
+    font-size: 0.86rem;
     color: var(--ink);
     text-decoration: none;
     border-bottom: 1px solid var(--line);
-    padding-bottom: 2px;
+    padding-bottom: 3px;
     transition: border-color 0.15s ease, color 0.15s ease;
   }
-  .contact-list a:hover, .contact-list a:focus-visible { color: var(--teal); border-color: var(--teal); outline: none; }
+  .clink:hover, .clink:focus-visible { color: var(--teal); border-color: var(--teal); outline: none; }
+  .ci { width: 15px; height: 15px; flex-shrink: 0; }
 
   footer {
     max-width: var(--maxw);
@@ -362,7 +377,7 @@
 
 <header class="site-nav">
   <nav class="nav-inner" aria-label="Section navigation">
-    <span class="nav-mono-mark">Abbas</span>
+    <a class="nav-mono-mark" href="#hero" aria-label="Back to top">Abbas</a>
     <a href="#about" class="exon">ABOUT</a>
     <svg class="intron" width="22" height="14" viewBox="0 0 22 14" aria-hidden="true"><path d="M1,11 L11,2 L21,11" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
     <a href="#research" class="exon">RESEARCH</a>
@@ -445,8 +460,6 @@
       <p>I'm currently seeking postdoctoral opportunities in RNA biology, plant stress responses, or gene regulation, where I can continue pushing at the interface of transcriptomics, molecular genetics and stress biology.</p>
 
       <p>I believe science, at its best, is service to humankind! :)</p>
-
-      <p class="publish-note">I publish as Syed Hussam Abbas (ORCID <a href="https://orcid.org/0009-0003-0017-0157" target="_blank" rel="noopener">0009-0003-0017-0157</a>).</p>
     </div>
   </section>
 
@@ -576,14 +589,17 @@
 
   <section id="contact" class="reveal">
     <span class="eyebrow">Contact</span>
-    <div class="contact-list">
-      <a href="mailto:abbas.syed.hussam@phd.uni-mate.hu">abbas.syed.hussam@phd.uni-mate.hu</a>
-      <a href="mailto:syedhussamabbas@gmail.com">syedhussamabbas@gmail.com</a>
-      <a href="https://www.linkedin.com/in/syed-hussam-abbas/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="https://scholar.google.com/citations?user=6hijnwQAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
-      <a href="https://orcid.org/0009-0003-0017-0157" target="_blank" rel="noopener">ORCID</a>
-      <a href="https://www.researchgate.net/profile/Syed-Hussam-Abbas" target="_blank" rel="noopener">ResearchGate</a>
-      <a href="https://arena.eudres.eu/BoR/researcher.php?researcherid=1656" target="_blank" rel="noopener">EUDRES</a>
+
+    <div class="contact-row">
+      <a class="clink" href="mailto:abbas.syed.hussam@phd.uni-mate.hu"><svg class="ci" viewBox="0 0 16 16" aria-hidden="true"><rect x="0.5" y="2.5" width="15" height="11" rx="2" fill="#2F6FAB"/><path d="M1.8 4.2 L8 8.7 L14.2 4.2" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>abbas.syed.hussam@phd.uni-mate.hu</a>
+      <a class="clink" href="mailto:syedhussamabbas@gmail.com"><svg class="ci" viewBox="0 0 16 16" aria-hidden="true"><rect x="0.5" y="2.5" width="15" height="11" rx="2" fill="#2F6FAB"/><path d="M1.8 4.2 L8 8.7 L14.2 4.2" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>syedhussamabbas@gmail.com</a>
+    </div>
+
+    <div class="contact-row contact-profiles">
+      <a class="clink" href="https://orcid.org/0009-0003-0017-0157" target="_blank" rel="noopener"><svg class="ci" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#A6CE39"/><text x="8" y="11.6" text-anchor="middle" fill="#fff" font-family="Helvetica,Arial,sans-serif" font-size="9.5" font-weight="700">iD</text></svg>ORCID</a>
+      <a class="clink" href="https://www.linkedin.com/in/syed-hussam-abbas/" target="_blank" rel="noopener"><svg class="ci" viewBox="0 0 16 16" aria-hidden="true"><rect width="16" height="16" rx="2.6" fill="#0A66C2"/><text x="8" y="11.6" text-anchor="middle" fill="#fff" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="700">in</text></svg>LinkedIn</a>
+      <a class="clink" href="https://www.researchgate.net/profile/Syed-Hussam-Abbas" target="_blank" rel="noopener"><svg class="ci" viewBox="0 0 16 16" aria-hidden="true"><rect width="16" height="16" rx="2.6" fill="#00CCBB"/><text x="8" y="11.4" text-anchor="middle" fill="#fff" font-family="Helvetica,Arial,sans-serif" font-size="8.2" font-weight="700">RG</text></svg>ResearchGate</a>
+      <a class="clink" href="https://scholar.google.com/citations?user=6hijnwQAAAAJ" target="_blank" rel="noopener"><svg class="ci" viewBox="0 0 16 16" aria-hidden="true"><polygon points="8,1.6 15.2,5.6 8,9.6 0.8,5.6" fill="#4285F4"/><path d="M4.3 7.3 V11.4 Q8 14.2 11.7 11.4 V7.3" fill="none" stroke="#4285F4" stroke-width="1.6" stroke-linecap="round"/></svg>Google Scholar</a>
     </div>
   </section>
 
@@ -592,6 +608,31 @@
 <footer>&copy; 2026 Syed Hussam Abbas</footer>
 
 <script>
+  // Highlight the nav exon for the section currently in view
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('.exon'));
+    var ids = links.map(function (a) { return a.getAttribute('href').slice(1); });
+    var sections = ids.map(function (id) { return document.getElementById(id); });
+
+    function sync() {
+      var mark = window.innerHeight * 0.35;
+      var current = -1;
+      for (var i = 0; i < sections.length; i++) {
+        if (sections[i] && sections[i].getBoundingClientRect().top <= mark) { current = i; }
+      }
+      links.forEach(function (a, i) { a.classList.toggle('active', i === current); });
+    }
+
+    var queued = false;
+    window.addEventListener('scroll', function () {
+      if (queued) return;
+      queued = true;
+      window.requestAnimationFrame(function () { sync(); queued = false; });
+    }, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
+  })();
+
   (function () {
     var els = document.querySelectorAll('.reveal');
     if (!('IntersectionObserver' in window)) {
