@@ -10,19 +10,19 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #DFEAC3;
-    --bg-card: #D0E0AE;
+    --bg: #E6EED0;
+    --bg-card: #D9E5BF;
     --ink: #1F241A;
     --ink-soft: #565A4D;
     --rust: #B1552A;
     --olive: #4B5A24;
     --olive-deep: #36421A;
-    --olive-light: #C3D79A;
+    --olive-light: #CCDCA8;
     --teal: var(--olive);
-    --line: #B9CC92;
+    --line: #C2D2A1;
     --serif: 'Newsreader', serif;
     --sans: 'Inter', sans-serif;
     --mono: 'IBM Plex Mono', monospace;
@@ -45,14 +45,14 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  em { font-family: var(--serif); font-style: italic; }
+  em { font-style: italic; }
 
   /* Navigation, styled as an exon/intron gene diagram */
   .site-nav {
     position: sticky;
     top: 0;
     z-index: 10;
-    background: rgba(223,234,195,0.94);
+    background: rgba(230,238,208,0.94);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     border-bottom: 1px solid var(--line);
@@ -68,6 +68,8 @@
     scrollbar-width: none;
   }
   .nav-inner::-webkit-scrollbar { display: none; }
+  .nav-inner { -webkit-overflow-scrolling: touch; scroll-snap-type: x proximity; }
+  .nav-inner > a { scroll-snap-align: start; }
   .nav-mono-mark {
     font-family: var(--mono);
     font-size: 0.82rem;
@@ -107,11 +109,14 @@
     border-color: var(--olive);
   }
   .exon.active:hover { background: var(--olive-deep); border-color: var(--olive-deep); }
-  .intron { color: var(--line); flex-shrink: 0; }
+  .intron { color: var(--olive); opacity: 0.55; flex-shrink: 0; }
 
   main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; }
 
   section { padding: 5rem 0; border-bottom: 1px solid var(--line); }
+  section { scroll-margin-top: 72px; }
+  sup { line-height: 0; font-size: 0.7em; }
+  .hero-statement em { font-style: normal; }
   section:last-of-type { border-bottom: none; }
 
   .eyebrow {
@@ -412,6 +417,17 @@
     .iso-label { width: 4rem; font-size: 0.6rem; }
     .exon-block { width: 30px; }
     .hero-affiliation br { display: block; }
+    .site-nav { padding: 0.7rem 0.9rem; }
+    .nav-inner {
+      gap: 0.2rem;
+      -webkit-mask-image: linear-gradient(to right, #000 88%, transparent);
+      mask-image: linear-gradient(to right, #000 88%, transparent);
+      padding-right: 1.5rem;
+    }
+    .nav-inner.at-end { -webkit-mask-image: none; mask-image: none; }
+    .nav-mono-mark { margin-right: 0.4rem; padding-right: 0.5rem; }
+    .exon { font-size: 0.64rem; padding: 0.38rem 0.5rem; }
+    .intron { width: 14px; }
   }
 </style>
 </head>
@@ -421,15 +437,15 @@
   <nav class="nav-inner" aria-label="Section navigation">
     <a class="nav-mono-mark" href="#hero" aria-label="Back to top">Abbas</a>
     <a href="#about" class="exon">ABOUT</a>
-    <svg class="intron" width="22" height="14" viewBox="0 0 22 14" aria-hidden="true"><path d="M1,11 L11,2 L21,11" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    <svg class="intron" width="18" height="14" viewBox="0 0 18 14" aria-hidden="true"><path d="M2,7 H15 M10.5,2.5 L15,7 L10.5,11.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     <a href="#research" class="exon">RESEARCH</a>
-    <svg class="intron" width="22" height="14" viewBox="0 0 22 14" aria-hidden="true"><path d="M1,11 L11,2 L21,11" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    <svg class="intron" width="18" height="14" viewBox="0 0 18 14" aria-hidden="true"><path d="M2,7 H15 M10.5,2.5 L15,7 L10.5,11.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     <a href="#publications" class="exon">PUBLICATIONS</a>
-    <svg class="intron" width="22" height="14" viewBox="0 0 22 14" aria-hidden="true"><path d="M1,11 L11,2 L21,11" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    <svg class="intron" width="18" height="14" viewBox="0 0 18 14" aria-hidden="true"><path d="M2,7 H15 M10.5,2.5 L15,7 L10.5,11.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     <a href="#awards" class="exon">AWARDS</a>
-    <svg class="intron" width="22" height="14" viewBox="0 0 22 14" aria-hidden="true"><path d="M1,11 L11,2 L21,11" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    <svg class="intron" width="18" height="14" viewBox="0 0 18 14" aria-hidden="true"><path d="M2,7 H15 M10.5,2.5 L15,7 L10.5,11.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     <a href="#cv" class="exon">CV</a>
-    <svg class="intron" width="22" height="14" viewBox="0 0 22 14" aria-hidden="true"><path d="M1,11 L11,2 L21,11" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    <svg class="intron" width="18" height="14" viewBox="0 0 18 14" aria-hidden="true"><path d="M2,7 H15 M10.5,2.5 L15,7 L10.5,11.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     <a href="#contact" class="exon">CONTACT</a>
   </nav>
 </header>
@@ -447,7 +463,7 @@
       MATE University (Hungarian University of Agriculture and Life Sciences)<br>
       Gödöllő, Hungary
     </p>
-    <p class="hero-statement">I study how alternative splicing and nonsense-mediated decay work together to control heat shock factor activity as <em>Arabidopsis</em> plants heat up, cool down, and remember the stress days later.</p>
+    <p class="hero-statement">I study how <em>Arabidopsis</em> plants recover from heat stress and remember it days later, and how nonsense-mediated decay and alternative splicing help them reset once the heat has passed.</p>
 
     <div class="isoform-diagram">
       <div class="isoform-row">
@@ -485,14 +501,13 @@
   <section id="about" class="reveal">
     <span class="eyebrow">About</span>
     <div class="about-text">
-      <p>I'm a Plant Molecular Biologist with 4+ years of experience in post-transcriptional gene regulation, RNA biology and plant stress responses. I'm currently working with Dr. Tibor Csorba in the Plant Stress Biology Group, Genetics and Biotechnology Institute, MATE University in G&#246;d&#246;ll&#337;, Hungary. My PhD work sits at the intersection of RNA surveillance (NMD pathway), alternative splicing and heat stress memory in plants.</p>
+      <p>I'm a Plant Molecular Biologist with 4+ years of experience in post-transcriptional gene regulation, RNA biology and plant stress responses. I'm currently working with Dr. Tibor Csorba in the Plant Stress Biology Group, Genetics and Biotechnology Institute, MATE University in G&#246;d&#246;ll&#337;, Hungary. My PhD work sits at the intersection of RNA surveillance (NMD pathway), alternative splicing, heat stress recovery and thermomemory in plants.</p>
 
       <p>My core research interests include:</p>
       <ul class="interest-list">
         <li>Post-transcriptional and translational regulation: alternative splicing, NMD pathway and RNA surveillance</li>
         <li>Heat stress transcription factors (HSFA2, HSFA3) and thermomemory</li>
         <li>Co-transcriptional regulation and transcription elongation fidelity</li>
-        <li>Abiotic stress signalling and molecular responses in plant systems</li>
         <li>Autophagy and protein quality control: selective degradation and proteostasis during stress recovery</li>
         <li>Post-translational modifications (PTMs) in stress regulatory networks</li>
       </ul>
@@ -624,7 +639,7 @@
   </section>
 
   <section id="awards" class="reveal">
-    <span class="eyebrow">Awards</span>
+    <span class="eyebrow">Awards and Scholarships</span>
     <ul class="award-list">
       <li class="award-item featured">
         <div><strong>Best Poster Award</strong><span class="award-detail">de.NBI Summer School: Bioinformatics for Proteomics, Ruhr-Universit&#228;t Bochum, Germany. Poster on nonsense-mediated decay in heat stress recovery.</span></div>
@@ -700,7 +715,20 @@
         if (sections[i] && sections[i].getBoundingClientRect().top <= mark) { current = i; }
       }
       links.forEach(function (a, i) { a.classList.toggle('active', i === current); });
+      if (current !== last && current >= 0) {
+        var a = links[current];
+        var target = a.offsetLeft - nav.clientWidth / 2 + a.offsetWidth / 2;
+        nav.scrollTo({ left: Math.max(0, target), behavior: reduce ? 'auto' : 'smooth' });
+      }
+      last = current;
     }
+    var nav = document.querySelector('.nav-inner');
+    var last = -2;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function edge() { nav.classList.toggle('at-end', nav.scrollLeft + nav.clientWidth >= nav.scrollWidth - 4); }
+    nav.addEventListener('scroll', edge, { passive: true });
+    window.addEventListener('resize', edge);
+    edge();
 
     var queued = false;
     window.addEventListener('scroll', function () {
