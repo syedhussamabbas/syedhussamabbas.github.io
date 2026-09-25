@@ -13,13 +13,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #F2F3EC;
-    --bg-card: #E7E9DD;
-    --ink: #1C201A;
+    --bg: #EDF1DD;
+    --bg-card: #E2E8CD;
+    --ink: #1F241A;
     --ink-soft: #565A4D;
     --rust: #B1552A;
-    --teal: #1E5A50;
-    --line: #D2D4C4;
+    --olive: #4B5A24;
+    --olive-deep: #36421A;
+    --olive-light: #D5DEB5;
+    --teal: var(--olive);
+    --line: #CCD4B2;
     --serif: 'Newsreader', serif;
     --sans: 'Inter', sans-serif;
     --mono: 'IBM Plex Mono', monospace;
@@ -49,7 +52,7 @@
     position: sticky;
     top: 0;
     z-index: 10;
-    background: rgba(242,243,236,0.92);
+    background: rgba(237,241,221,0.93);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     border-bottom: 1px solid var(--line);
@@ -99,11 +102,11 @@
     outline-offset: 2px;
   }
   .exon.active {
-    background: var(--ink);
+    background: var(--olive);
     color: var(--bg);
-    border-color: var(--ink);
+    border-color: var(--olive);
   }
-  .exon.active:hover { background: var(--teal); border-color: var(--teal); }
+  .exon.active:hover { background: var(--olive-deep); border-color: var(--olive-deep); }
   .intron { color: var(--line); flex-shrink: 0; }
 
   main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; }
@@ -178,7 +181,7 @@
     flex-shrink: 0;
   }
   .iso-track { display: flex; align-items: center; }
-  .exon-block { width: 44px; height: 13px; background: var(--ink); border-radius: 2px; flex-shrink: 0; }
+  .exon-block { width: 44px; height: 13px; background: var(--olive); border-radius: 2px; flex-shrink: 0; }
   .intron-line { color: var(--line); flex-shrink: 0; }
   .intron-retained {
     width: 44px;
@@ -225,6 +228,7 @@
   .research-card {
     background: var(--bg-card);
     border: 1px solid var(--line);
+    border-left: 3px solid var(--olive);
     border-radius: 6px;
     padding: 1.75rem;
   }
@@ -308,7 +312,7 @@
     gap: 0.5rem;
     font-family: var(--mono);
     font-size: 0.85rem;
-    background: var(--ink);
+    background: var(--olive);
     color: var(--bg);
     text-decoration: none;
     padding: 0.75rem 1.4rem;
@@ -316,7 +320,7 @@
     margin-top: 1.25rem;
     transition: background 0.15s ease;
   }
-  .btn:hover, .btn:focus-visible { background: var(--teal); outline: 2px solid var(--teal); outline-offset: 2px; }
+  .btn:hover, .btn:focus-visible { background: var(--olive-deep); outline: 2px solid var(--olive-deep); outline-offset: 2px; }
 
   /* Contact */
   .contact-row {
@@ -342,12 +346,38 @@
   .ci { width: 15px; height: 15px; flex-shrink: 0; }
 
   footer {
-    max-width: var(--maxw);
-    margin: 0 auto;
-    padding: 2.5rem 1.5rem 3.5rem;
+    background: var(--olive);
+    color: var(--olive-light);
     font-family: var(--mono);
     font-size: 0.75rem;
-    color: var(--ink-soft);
+    padding: 1.6rem 1.5rem 2rem;
+  }
+  footer p { max-width: var(--maxw); margin: 0 auto; }
+
+  /* Awards */
+  .award-list { list-style: none; }
+  .award-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.25rem 1.5rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--line);
+    font-size: 0.97rem;
+  }
+  .award-item:first-child { border-top: none; padding-top: 0.2rem; }
+  .award-item strong { font-weight: 600; }
+  .award-item .award-detail { display: block; font-size: 0.88rem; color: var(--ink-soft); margin-top: 0.15rem; }
+  .award-year { font-family: var(--mono); font-size: 0.78rem; color: var(--olive); white-space: nowrap; padding-top: 0.15rem; }
+  .award-item.featured {
+    background: var(--olive-light);
+    border: none;
+    border-radius: 6px;
+    padding: 1rem 1.1rem;
+    margin-bottom: 0.4rem;
+  }
+  .award-item.featured + .award-item { border-top: none; }
+  @media (max-width: 640px) {
+    .award-item { grid-template-columns: 1fr; }
   }
 
   /* Scroll reveal */
@@ -383,6 +413,8 @@
     <a href="#research" class="exon">RESEARCH</a>
     <svg class="intron" width="22" height="14" viewBox="0 0 22 14" aria-hidden="true"><path d="M1,11 L11,2 L21,11" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
     <a href="#publications" class="exon">PUBLICATIONS</a>
+    <svg class="intron" width="22" height="14" viewBox="0 0 22 14" aria-hidden="true"><path d="M1,11 L11,2 L21,11" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    <a href="#awards" class="exon">AWARDS</a>
     <svg class="intron" width="22" height="14" viewBox="0 0 22 14" aria-hidden="true"><path d="M1,11 L11,2 L21,11" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
     <a href="#cv" class="exon">CV</a>
     <svg class="intron" width="22" height="14" viewBox="0 0 22 14" aria-hidden="true"><path d="M1,11 L11,2 L21,11" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
@@ -453,7 +485,7 @@
         <li>Post-translational modifications (PTMs) in stress regulatory networks</li>
       </ul>
 
-      <p>My work has been published in <span class="venue">The Plant Cell</span> and <span class="venue">The Plant Journal</span> on transcription fidelity, stress responses, and gene regulation in plants, with additional first-author research work submitted to the <span class="venue">Journal of Experimental Botany</span>.</p>
+      <p>My work has been published in <span class="venue">The Plant Cell</span> and <span class="venue">The Plant Journal</span> on transcription fidelity, stress responses, and gene regulation in plants, with additional first-author research work submitted to <span class="venue">Plant and Cell Physiology</span>.</p>
 
       <p>Beyond academia, the regulatory principles I work on (including RNA quality control, stress-responsive gene networks, isoform-level switches) translate directly into questions relevant to crop resilience, trait engineering and RNA-based biotechnology.</p>
 
@@ -470,7 +502,7 @@
       <div class="research-card">
         <span class="research-card-label">Journal article</span>
         <h3>Nonsense-mediated decay promotes heat stress recovery independently of HsfA2/HsfA3 in <em>Arabidopsis</em></h3>
-        <span class="research-venue"><span class="venue">Journal of Experimental Botany</span> &middot; Submitted 2026</span>
+        <span class="research-venue"><span class="venue">Plant and Cell Physiology</span> &middot; Submitted 2026</span>
         <p>Heat stress triggers alternative splicing of HSFA2, the master regulator of the heat shock response, generating several mRNA isoforms whose balance shifts through acclimation and recovery. This work maps how nonsense-mediated decay governs which of those isoforms accumulate, and what that means for how a plant remembers a heat event days after it ends.</p>
         <p>The central finding is that NMD promotes recovery from heat stress through a route independent of both HsfA2 and HsfA3, so the decay machinery does more than clear faulty transcripts. It actively helps the plant reset. In NMD-deficient backgrounds the isoform patterns depart from what current AS-NMD models predict, pointing to further layers of regulation still to be described.</p>
       </div>
@@ -513,7 +545,7 @@
       <ul class="pub-list">
         <li class="pub-item">
           <span class="self">Abbas, S.H.</span>, Dark&#243;, &#201;., Er&#337;s, T., Csorba, T. (2026). Nonsense-mediated decay promotes heat stress recovery independently of HsfA2/HsfA3 in <em>Arabidopsis</em>.
-          <span class="pub-meta">Manuscript submitted to the <span class="venue">Journal of Experimental Botany</span></span>
+          <span class="pub-meta">Manuscript submitted to <span class="venue">Plant and Cell Physiology</span></span>
         </li>
         <li class="pub-item">
           Szaker, H.M.*, Verma, R.*, Sz&#225;deczky-Kardoss, I., G&#225;l, N., <span class="self">Abbas, S.H.</span>, Dark&#243;, &#201;., Pettk&#243;-Szandtner, A., Silhavy, D., Csorba, T. (2025). Transcription fidelity and control of alternative splicing contribute to heat stress survival in <em>Arabidopsis</em>. <span class="venue">The Plant Cell</span>, 37(11), koaf256.
@@ -579,6 +611,40 @@
     </div>
   </section>
 
+  <section id="awards" class="reveal">
+    <span class="eyebrow">Awards</span>
+    <ul class="award-list">
+      <li class="award-item featured">
+        <div><strong>Best Poster Award</strong><span class="award-detail">de.NBI Summer School: Bioinformatics for Proteomics, Ruhr-Universit&#228;t Bochum, Germany. Poster on nonsense-mediated decay in heat stress recovery.</span></div>
+        <span class="award-year">2026</span>
+      </li>
+      <li class="award-item">
+        <div><strong>Best Publication Award</strong><span class="award-detail">GBI Day, Genetics and Biotechnology Institute, MATE University, Hungary</span></div>
+        <span class="award-year">2025</span>
+      </li>
+      <li class="award-item">
+        <div><strong>Best Poster Award</strong><span class="award-detail">E<sup>3</sup>UDRES<sup>2</sup> Science Festival, Valmiera, Latvia</span></div>
+        <span class="award-year">2025</span>
+      </li>
+      <li class="award-item">
+        <div><strong>Stipendium Hungaricum Dissertation Scholarship</strong><span class="award-detail">Hungarian government scholarship for international doctoral researchers</span></div>
+        <span class="award-year"></span>
+      </li>
+      <li class="award-item">
+        <div><strong>Stipendium Hungaricum Scholarship</strong><span class="award-detail">Hungarian government scholarship for international doctoral researchers</span></div>
+        <span class="award-year"></span>
+      </li>
+      <li class="award-item">
+        <div><strong>Pann&#243;nia Mobility Scholarship</strong><span class="award-detail">Hungarian mobility award for international research activities</span></div>
+        <span class="award-year"></span>
+      </li>
+      <li class="award-item">
+        <div><strong>Chief Minister's Merit Scholarship</strong><span class="award-detail">Competitive academic merit award, Pakistan</span></div>
+        <span class="award-year"></span>
+      </li>
+    </ul>
+  </section>
+
   <section id="cv" class="reveal">
     <span class="eyebrow">CV</span>
     <div class="cv-box">
@@ -600,12 +666,13 @@
       <a class="clink" href="https://www.linkedin.com/in/syed-hussam-abbas/" target="_blank" rel="noopener"><svg class="ci" viewBox="0 0 16 16" aria-hidden="true"><rect width="16" height="16" rx="2.6" fill="#0A66C2"/><text x="8" y="11.6" text-anchor="middle" fill="#fff" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="700">in</text></svg>LinkedIn</a>
       <a class="clink" href="https://www.researchgate.net/profile/Syed-Hussam-Abbas" target="_blank" rel="noopener"><svg class="ci" viewBox="0 0 16 16" aria-hidden="true"><rect width="16" height="16" rx="2.6" fill="#00CCBB"/><text x="8" y="11.4" text-anchor="middle" fill="#fff" font-family="Helvetica,Arial,sans-serif" font-size="8.2" font-weight="700">RG</text></svg>ResearchGate</a>
       <a class="clink" href="https://scholar.google.com/citations?user=6hijnwQAAAAJ" target="_blank" rel="noopener"><svg class="ci" viewBox="0 0 16 16" aria-hidden="true"><polygon points="8,1.6 15.2,5.6 8,9.6 0.8,5.6" fill="#4285F4"/><path d="M4.3 7.3 V11.4 Q8 14.2 11.7 11.4 V7.3" fill="none" stroke="#4285F4" stroke-width="1.6" stroke-linecap="round"/></svg>Google Scholar</a>
+      <a class="clink" href="https://bsky.app/profile/syedhussamabbas.bsky.social" target="_blank" rel="noopener"><svg class="ci" viewBox="0 0 600 530" aria-hidden="true"><path fill="#1185FE" d="M135.72 44.03C202.216 93.951 273.74 195.17 300 249.49c26.262-54.316 97.782-155.54 164.28-205.46C512.26 8.009 590-19.862 590 68.825c0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.38-3.69-10.832-3.708-7.896-.017-2.936-1.193.516-3.707 7.896-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.45-163.25-81.433C20.15 217.613 9.997 86.535 9.997 68.825c0-88.687 77.742-60.816 125.72-24.795z"/></svg>Bluesky</a>
     </div>
   </section>
 
 </main>
 
-<footer>&copy; 2026 Syed Hussam Abbas</footer>
+<footer><p>&copy; 2026 Syed Hussam Abbas</p></footer>
 
 <script>
   // Highlight the nav exon for the section currently in view
