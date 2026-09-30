@@ -2,761 +2,1099 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Syed Hussam Abbas · Plant Molecular Biology</title>
 <meta name="description" content="Personal academic website of Syed Hussam Abbas, PhD candidate in plant molecular biology at MATE University, Hungary, studying heat stress, thermomemory, and nonsense-mediated decay in Arabidopsis.">
+<meta name="author" content="Syed Hussam Abbas">
+<link rel="canonical" href="https://syedhussamabbas.github.io/">
 <meta property="og:title" content="Syed Hussam Abbas · Plant Molecular Biology">
 <meta property="og:description" content="PhD candidate researching heat stress, thermomemory, and nonsense-mediated decay in Arabidopsis at MATE University, Hungary.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://syedhussamabbas.github.io/">
+<meta property="og:image" content="https://syedhussamabbas.github.io/portrait.jpg">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12160C" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='31' fill='%234B5A24'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Georgia,serif' font-size='28' fill='%23FFFFFF'%3EHA%3C/text%3E%3C/svg%3E">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<script>
+  // Set the colour theme before the page paints, so there is no flash
+  document.documentElement.classList.add('js');
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('theme'); } catch (e) {}
+    if (!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Syed Hussam Abbas",
+  "alternateName": "Hussam Abbas",
+  "jobTitle": "Plant Molecular Biologist, PhD candidate",
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "Hungarian University of Agriculture and Life Sciences (MATE)"
+  },
+  "url": "https://syedhussamabbas.github.io/",
+  "image": "https://syedhussamabbas.github.io/portrait.jpg",
+  "email": "mailto:syedhussamabbas@gmail.com",
+  "sameAs": [
+    "https://orcid.org/0009-0003-0017-0157",
+    "https://www.linkedin.com/in/syed-hussam-abbas/",
+    "https://www.researchgate.net/profile/Syed-Hussam-Abbas",
+    "https://scholar.google.com/citations?user=6hijnwQAAAAJ",
+    "https://bsky.app/profile/syedhussamabbas.bsky.social"
+  ]
+}
+</script>
+
 <style>
+  /* ---------- Colour and type tokens ---------- */
   :root {
-    --bg: #E6EED0;
-    --bg-card: #D9E5BF;
-    --ink: #1F241A;
-    --ink-soft: #565A4D;
-    --rust: #B1552A;
+    --paper: #FFFFFF;
+    --ivory: #F6F7F1;
+    --mist: #E9EEDC;
+    --line: #DCE2CB;
+    --ink: #1B1F14;
+    --ink-soft: #5A604F;
     --olive: #4B5A24;
-    --olive-deep: #36421A;
-    --olive-light: #CCDCA8;
-    --teal: var(--olive);
-    --line: #C2D2A1;
-    --serif: 'Newsreader', serif;
-    --sans: 'Inter', sans-serif;
-    --mono: 'IBM Plex Mono', monospace;
-    --maxw: 760px;
+    --olive-deep: #2E3815;
+    --burgundy: #7B1E2C;
+    --on-dark: #F3F5EC;
+    --on-dark-soft: #C5CDAE;
+    --nav-bg: rgba(255, 255, 255, 0.84);
+    --shadow: 0 1px 2px rgba(46, 56, 21, 0.06), 0 12px 32px -12px rgba(46, 56, 21, 0.18);
+
+    --display: 'Cormorant Garamond', 'Cormorant', Garamond, Georgia, serif;
+    --sans: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+    --wide: 1120px;
+    --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --nav-h: 68px;
+  }
+  [data-theme="dark"] {
+    --paper: #12160C;
+    --ivory: #171C10;
+    --mist: #222A17;
+    --line: #2E3621;
+    --ink: #ECEFE3;
+    --ink-soft: #AAB199;
+    --olive: #B3C27E;
+    --olive-deep: #0B0E06;
+    --burgundy: #D7717F;
+    --nav-bg: rgba(18, 22, 12, 0.84);
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px -12px rgba(0, 0, 0, 0.6);
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-  }
-
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 12px); -webkit-text-size-adjust: 100%; }
   body {
-    background: var(--bg);
+    background: var(--paper);
     color: var(--ink);
     font-family: var(--sans);
-    line-height: 1.6;
-    font-size: 16px;
+    font-size: 17px;
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
+    transition: background-color 0.5s var(--ease), color 0.5s var(--ease);
   }
-
-  em { font-style: italic; }
-
-  /* Navigation, styled as an exon/intron gene diagram */
-  .site-nav {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: rgba(230,238,208,0.94);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    border-bottom: 1px solid var(--line);
-    padding: 0.9rem 1.5rem;
-  }
-  .nav-inner {
-    max-width: var(--maxw);
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-  .nav-inner::-webkit-scrollbar { display: none; }
-  .nav-inner { -webkit-overflow-scrolling: touch; scroll-snap-type: x proximity; }
-  .nav-inner > a { scroll-snap-align: start; }
-  .nav-mono-mark {
-    font-family: var(--mono);
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: var(--teal);
-    text-decoration: none;
-    letter-spacing: 0.04em;
-    margin-right: 0.75rem;
-    padding-right: 0.75rem;
-    border-right: 1px solid var(--line);
-    white-space: nowrap;
-    transition: opacity 0.15s ease;
-  }
-  .nav-mono-mark:hover, .nav-mono-mark:focus-visible { opacity: 0.65; outline: none; }
-  .exon {
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.06em;
-    text-decoration: none;
-    color: var(--ink);
-    background: var(--bg-card);
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    padding: 0.4rem 0.6rem;
-    white-space: nowrap;
-    transition: background 0.15s ease, color 0.15s ease;
-  }
-  .exon:hover, .exon:focus-visible {
-    background: var(--teal);
-    color: var(--bg);
-    outline: 2px solid var(--teal);
-    outline-offset: 2px;
-  }
-  .exon.active {
-    background: var(--olive);
-    color: var(--bg);
-    border-color: var(--olive);
-  }
-  .exon.active:hover { background: var(--olive-deep); border-color: var(--olive-deep); }
-  .intron { color: var(--olive); opacity: 0.55; flex-shrink: 0; }
-
-  main { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; }
-
-  section { padding: 5rem 0; border-bottom: 1px solid var(--line); }
-  section { scroll-margin-top: 72px; }
+  body.menu-open { overflow: hidden; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  em, i { font-style: italic; }
   sup { line-height: 0; font-size: 0.7em; }
-  .hero-statement em { font-style: normal; }
-  section:last-of-type { border-bottom: none; }
+  ::selection { background: var(--mist); color: var(--ink); }
+  :focus-visible { outline: 2px solid var(--olive); outline-offset: 3px; border-radius: 2px; }
+  .skip {
+    position: absolute; left: 1rem; top: -3rem; z-index: 100;
+    background: var(--olive); color: var(--paper); padding: 0.5rem 0.9rem; border-radius: 4px;
+    text-decoration: none; font-size: 0.9rem; transition: top 0.2s var(--ease);
+  }
+  .skip:focus { top: 1rem; }
 
-  .eyebrow {
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--teal);
-    margin-bottom: 1rem;
-    display: block;
-    line-height: 1.8;
+  .wrap { max-width: var(--wide); margin: 0 auto; padding: 0 2rem; }
+
+  /* ---------- Reading progress ---------- */
+  .progress {
+    position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 60;
+    background: var(--olive); transform-origin: 0 50%; transform: scaleX(0);
   }
 
-  /* Hero */
-  #hero { padding-top: 3.5rem; }
-  .hero-head {
-    display: flex;
-    align-items: center;
-    gap: 1.75rem;
-    margin-bottom: 1.4rem;
+  /* ---------- Header and navigation ---------- */
+  .site-header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    height: var(--nav-h);
+    background: var(--nav-bg);
+    backdrop-filter: saturate(1.4) blur(14px);
+    -webkit-backdrop-filter: saturate(1.4) blur(14px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.4s var(--ease), box-shadow 0.4s var(--ease), background-color 0.5s var(--ease);
+  }
+  .site-header.scrolled { border-bottom-color: var(--line); box-shadow: 0 8px 24px -18px rgba(46, 56, 21, 0.35); }
+  .bar { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+
+  .nav { position: relative; height: 100%; display: flex; align-items: center; }
+  .nav-links { list-style: none; display: flex; gap: 2.1rem; height: 100%; align-items: center; }
+  .nav-links a {
+    font-size: 0.92rem; font-weight: 500; letter-spacing: 0.01em;
+    color: var(--ink-soft); text-decoration: none;
+    padding: 0.4rem 0; transition: color 0.3s var(--ease);
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+  .nav-indicator {
+    position: absolute; bottom: 14px; left: 0; height: 1px; width: 0;
+    background: var(--olive); opacity: 0;
+    transition: transform 0.55s var(--ease), width 0.55s var(--ease), opacity 0.3s var(--ease);
+  }
+  .mobile-home { display: none; font-family: var(--display); font-size: 1.35rem; font-weight: 500; text-decoration: none; }
+
+  .bar-actions { display: flex; align-items: center; gap: 0.4rem; }
+  .icon-btn {
+    width: 40px; height: 40px; border-radius: 50%;
+    display: inline-grid; place-items: center;
+    background: transparent; border: 1px solid transparent; color: var(--ink);
+    cursor: pointer; transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease);
+  }
+  .icon-btn:hover { background: var(--mist); }
+  .icon-btn svg { width: 18px; height: 18px; }
+  .theme-toggle .moon { display: none; }
+  [data-theme="dark"] .theme-toggle .sun { display: none; }
+  [data-theme="dark"] .theme-toggle .moon { display: block; }
+  .menu-toggle { display: none; }
+  .menu-toggle span { display: block; width: 18px; height: 1.5px; background: currentColor; transition: transform 0.45s var(--ease); }
+  .menu-toggle span + span { margin-top: 5px; }
+  .menu-open .menu-toggle span:first-child { transform: translateY(3.25px) rotate(45deg); }
+  .menu-open .menu-toggle span:last-child { transform: translateY(-3.25px) rotate(-45deg); }
+
+  /* Mobile menu panel */
+  .menu-panel {
+    position: fixed; inset: var(--nav-h) 0 0 0; z-index: 45;
+    background: var(--paper);
+    padding: 2.5rem 2rem 3rem;
+    display: flex; flex-direction: column; justify-content: space-between;
+    opacity: 0; visibility: hidden; transform: translateY(-8px);
+    transition: opacity 0.45s var(--ease), transform 0.45s var(--ease), visibility 0s linear 0.45s;
+  }
+  .menu-open .menu-panel { opacity: 1; visibility: visible; transform: none; transition: opacity 0.45s var(--ease), transform 0.45s var(--ease); }
+  .menu-panel ul { list-style: none; }
+  .menu-panel li { border-bottom: 1px solid var(--line); opacity: 0; transform: translateY(10px); transition: opacity 0.5s var(--ease), transform 0.5s var(--ease); }
+  .menu-open .menu-panel li { opacity: 1; transform: none; }
+  .menu-panel li:nth-child(2) { transition-delay: 0.04s; } .menu-panel li:nth-child(3) { transition-delay: 0.08s; }
+  .menu-panel li:nth-child(4) { transition-delay: 0.12s; } .menu-panel li:nth-child(5) { transition-delay: 0.16s; }
+  .menu-panel li:nth-child(6) { transition-delay: 0.2s; }  .menu-panel li:nth-child(7) { transition-delay: 0.24s; }
+  .menu-panel a { display: block; padding: 0.85rem 0; font-family: var(--display); font-size: 2rem; font-weight: 500; text-decoration: none; }
+  .menu-panel a.active { color: var(--olive); }
+  .menu-panel .menu-foot { font-size: 0.85rem; color: var(--ink-soft); }
+
+  /* ---------- Sections ---------- */
+  main { padding-top: var(--nav-h); }
+  .section { padding: 7rem 0; }
+  .section.tint { background: var(--ivory); transition: background-color 0.5s var(--ease); }
+  .section-head { display: grid; grid-template-columns: 1fr; gap: 0.75rem; margin-bottom: 3.25rem; max-width: 62ch; }
+  .section-title {
+    font-family: var(--display); font-weight: 500;
+    font-size: clamp(2.4rem, 4.6vw, 3.4rem); line-height: 1.05; letter-spacing: -0.01em;
+  }
+  .section-title::after {
+    content: ""; display: block; width: 56px; height: 1px; background: var(--olive); margin-top: 1.1rem;
+  }
+  .section-lead { color: var(--ink-soft); font-size: 1.02rem; }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 5.5rem 0 4rem; }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: 4.5rem; align-items: center; }
+  .hero-role { font-size: 0.95rem; color: var(--olive); font-weight: 500; line-height: 1.6; margin-bottom: 1.6rem; }
+  .hero-role span { display: block; color: var(--ink-soft); font-weight: 400; }
+  .hero-name {
+    font-family: var(--display); font-weight: 500;
+    font-size: clamp(3.1rem, 7.4vw, 6.1rem); line-height: 0.95; letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+  }
+  .hero-name span { display: block; }
+  .hero-name .last { font-style: italic; font-weight: 400; color: var(--olive); padding-left: 0.08em; }
+  .hero-affiliation { font-size: 0.93rem; color: var(--ink-soft); line-height: 1.65; margin-bottom: 2rem; padding-left: 1.1rem; border-left: 1px solid var(--line); }
+  .hero-statement {
+    font-family: var(--display); font-size: clamp(1.35rem, 2.3vw, 1.65rem); line-height: 1.45;
+    max-width: 34ch; margin-bottom: 2.4rem; color: var(--ink);
+  }
+  .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem 1.1rem; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    font-family: var(--sans); font-size: 0.93rem; font-weight: 500;
+    padding: 0.85rem 1.5rem; border-radius: 999px; text-decoration: none; cursor: pointer;
+    border: 1px solid var(--olive);
+    transition: background-color 0.35s var(--ease), color 0.35s var(--ease), border-color 0.35s var(--ease), transform 0.35s var(--ease);
+  }
+  .btn svg { width: 16px; height: 16px; }
+  .btn-solid { background: var(--olive); color: var(--paper); }
+  .btn-solid:hover { background: var(--olive-deep); border-color: var(--olive-deep); color: var(--on-dark); transform: translateY(-1px); }
+  .btn-ghost { background: transparent; color: var(--olive); }
+  .btn-ghost:hover { background: var(--mist); transform: translateY(-1px); }
+  .status { display: inline-flex; align-items: center; gap: 0.55rem; font-size: 0.86rem; color: var(--ink-soft); margin-top: 1.6rem; }
+  .status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--olive); box-shadow: 0 0 0 4px var(--mist); }
+
+  /* Arched portrait, like a conservatory window */
+  .portrait-frame { position: relative; justify-self: end; width: 100%; max-width: 360px; }
+  .portrait-frame::before {
+    content: ""; position: absolute; inset: -14px;
+    border: 1px solid var(--line);
+    border-radius: 999px 999px 10px 10px;
+    pointer-events: none;
   }
   .portrait {
-    width: 152px;
-    height: 152px;
-    border-radius: 50%;
-    object-fit: cover;
-    flex-shrink: 0;
+    width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 30%;
+    border-radius: 999px 999px 6px 6px;
+    background: var(--mist);
+    box-shadow: var(--shadow);
+  }
+
+  /* HSFA2 specimen plate */
+  .plate {
+    margin-top: 5rem;
     border: 1px solid var(--line);
-    filter: saturate(0.92);
+    border-radius: 14px;
+    background: var(--ivory);
+    padding: 2.4rem 2.6rem 2.2rem;
+    display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 2.5rem; align-items: center;
+    transition: background-color 0.5s var(--ease), border-color 0.5s var(--ease);
   }
-  .hero-name {
-    font-family: var(--serif);
-    font-weight: 600;
-    font-size: clamp(1.75rem, 5.2vw, 3.05rem);
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-    white-space: nowrap;
-  }
-  .hero-affiliation {
-    font-family: var(--mono);
-    font-size: 0.82rem;
-    color: var(--ink-soft);
-    margin-bottom: 1.75rem;
-    line-height: 1.6;
-  }
-  .hero-statement {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: clamp(1.1rem, 2.4vw, 1.35rem);
-    color: var(--ink);
-    max-width: 48ch;
-    line-height: 1.55;
-    margin-bottom: 3rem;
-    text-align: justify;
-    text-justify: inter-word;
-    hyphens: auto;
-    -webkit-hyphens: auto;
-  }
+  .plate svg { width: 100%; height: auto; overflow: visible; }
+  .plate text { font-family: var(--sans); font-size: 13px; fill: var(--ink-soft); }
+  .iso-row { cursor: default; }
+  .iso-row .exon-r { fill: var(--olive); transition: opacity 0.3s var(--ease); }
+  .iso-row .intron-p { fill: none; stroke: var(--ink-soft); stroke-width: 1.3; opacity: 0.6; }
+  .iso-row .retained { fill: url(#hatch); stroke: var(--burgundy); stroke-width: 1; }
+  .iso-row .row-hit { fill: transparent; }
+  .plate svg:hover .iso-row { opacity: 0.35; transition: opacity 0.35s var(--ease); }
+  .plate svg .iso-row:hover { opacity: 1; }
+  .plate-title { font-family: var(--display); font-size: 1.55rem; font-weight: 500; line-height: 1.2; margin-bottom: 0.7rem; }
+  .plate-caption { font-size: 0.93rem; color: var(--ink-soft); line-height: 1.65; }
+  .legend { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem 1.3rem; margin-top: 1.3rem; font-size: 0.83rem; color: var(--ink-soft); }
+  .legend li { display: inline-flex; align-items: center; gap: 0.5rem; }
+  .sw { display: inline-block; width: 22px; height: 9px; border-radius: 2px; }
+  .sw-exon { background: var(--olive); }
+  .plate .legend svg.sw-intron { width: 22px; height: 9px; background: none; border: none; overflow: visible; }
+  .sw-retained { border: 1px solid var(--burgundy); background: repeating-linear-gradient(45deg, var(--burgundy) 0 2px, transparent 2px 5px); }
 
-  /* Isoform diagram */
-  .isoform-diagram { margin-top: 2rem; }
-  .isoform-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem; }
-  .iso-label {
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    color: var(--ink-soft);
-    width: 5.4rem;
-    flex-shrink: 0;
-  }
-  .iso-track { display: flex; align-items: center; }
-  .exon-block { width: 44px; height: 13px; background: var(--olive); border-radius: 2px; flex-shrink: 0; }
-  .intron-line { color: var(--line); flex-shrink: 0; }
-  .intron-retained {
-    width: 44px;
-    height: 13px;
-    border-radius: 2px;
-    flex-shrink: 0;
-    background: repeating-linear-gradient(45deg, var(--rust), var(--rust) 3px, transparent 3px, transparent 6px);
-  }
-  .diagram-caption {
-    font-size: 0.8rem;
-    color: var(--ink-soft);
-    margin-top: 1.1rem;
-    font-style: italic;
-    max-width: 48ch;
-  }
+  /* One orchestrated entrance: the hero settles, then the gene model draws in */
+  .js .hero .rise { opacity: 0; transform: translateY(14px); }
+  .js .loaded .hero .rise { opacity: 1; transform: none; transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); transition-delay: calc(var(--i, 0) * 90ms); }
+  .js .draw .exon-r, .js .draw .retained { transform-box: fill-box; transform-origin: left center; transform: scaleX(0); }
+  .js .draw .intron-p { stroke-dasharray: 200; stroke-dashoffset: 200; }
+  .js .draw.go .exon-r, .js .draw.go .retained { transform: scaleX(1); transition: transform 0.7s var(--ease); transition-delay: var(--d, 0s); }
+  .js .draw.go .intron-p { stroke-dashoffset: 0; transition: stroke-dashoffset 0.7s var(--ease); transition-delay: var(--d, 0s); }
 
-  /* About */
-  .about-text {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 1.16rem;
-    line-height: 1.7;
-    max-width: 64ch;
-    text-align: justify;
-    text-justify: inter-word;
-    hyphens: auto;
-    -webkit-hyphens: auto;
+  /* ---------- About ---------- */
+  .about-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: 4.5rem; align-items: start; }
+  .prose p { margin-bottom: 1.25rem; max-width: 66ch; }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose .venue { font-style: italic; }
+  .prose .closing { font-family: var(--display); font-size: 1.55rem; line-height: 1.35; font-style: italic; color: var(--olive); margin-top: 2rem; }
+  .interests {
+    background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 2rem 2rem 1.6rem;
+    position: sticky; top: calc(var(--nav-h) + 2rem);
+    transition: background-color 0.5s var(--ease), border-color 0.5s var(--ease);
   }
-  .about-text em, .about-text .venue { font-family: inherit; font-style: italic; }
-  .about-text p { margin-bottom: 1.1rem; }
-  .about-text p:last-child { margin-bottom: 0; }
-  .interest-list {
-    list-style: none;
-    margin: -0.4rem 0 1.4rem;
-  }
-  .interest-list li {
-    position: relative;
-    padding-left: 1.2rem;
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-    line-height: 1.55;
-  }
-  .interest-list li:last-child { margin-bottom: 0; }
-  .interest-list li::before {
-    content: "\2022";
-    position: absolute;
-    left: 0;
-    top: -0.05rem;
-    color: var(--rust);
-    font-weight: 700;
-  }
+  .interests h3 { font-family: var(--display); font-weight: 500; font-size: 1.5rem; margin-bottom: 1rem; }
+  .interests ul { list-style: none; }
+  .interests li { position: relative; padding: 0.8rem 0 0.8rem 1.5rem; border-top: 1px solid var(--line); font-size: 0.96rem; line-height: 1.55; }
+  .interests li:first-child { border-top: none; padding-top: 0.2rem; }
+  .interests li::before { content: ""; position: absolute; left: 0; top: 1.45rem; width: 7px; height: 7px; border: 1px solid var(--olive); transform: rotate(45deg); }
+  .interests li:first-child::before { top: 0.85rem; }
 
-  /* Research */
-  .research-grid { display: flex; flex-direction: column; gap: 1.75rem; }
-  .research-card {
-    background: var(--bg-card);
-    border: 1px solid var(--line);
-    border-left: 3px solid var(--olive);
-    border-radius: 6px;
-    padding: 1.75rem;
+  /* ---------- Research ---------- */
+  .works { border-top: 1px solid var(--line); }
+  .work { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 8fr); gap: 3rem; padding: 2.75rem 0; border-bottom: 1px solid var(--line); }
+  .work-meta { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.6; }
+  .work-type { display: block; color: var(--olive); font-weight: 500; margin-bottom: 0.35rem; }
+  .work-venue { display: block; font-family: var(--display); font-size: 1.2rem; font-style: italic; color: var(--ink); line-height: 1.3; }
+  .work h3 { font-family: var(--display); font-weight: 500; font-size: clamp(1.45rem, 2.4vw, 1.85rem); line-height: 1.22; margin-bottom: 1rem; max-width: 40ch; }
+  .work p { color: var(--ink-soft); max-width: 64ch; }
+  .more { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.6s var(--ease); }
+  .more > div { overflow: hidden; }
+  .more > div > p { padding-top: 1rem; opacity: 0; transition: opacity 0.5s var(--ease); }
+  .more.open { grid-template-rows: 1fr; }
+  .more.open > div > p { opacity: 1; transition-delay: 0.12s; }
+  .work-actions { display: flex; flex-wrap: wrap; gap: 0.6rem 1.6rem; margin-top: 1.3rem; }
+  .text-btn {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    background: none; border: none; cursor: pointer; padding: 0.2rem 0;
+    font: 500 0.9rem/1.4 var(--sans); color: var(--olive); text-decoration: none;
+    border-bottom: 1px solid var(--line); transition: border-color 0.3s var(--ease);
   }
-  .research-card-label {
-    font-family: var(--mono);
-    font-size: 0.68rem;
-    color: var(--rust);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 0.6rem;
-    display: block;
-  }
-  .research-card h3 {
-    font-family: var(--serif);
-    font-size: 1.18rem;
-    font-weight: 600;
-    line-height: 1.3;
-    margin-bottom: 0.45rem;
-  }
-  .research-card p { font-size: 0.96rem; color: var(--ink-soft); margin-bottom: 0.8rem; }
-  .research-card p:last-child { margin-bottom: 0; }
-  .research-venue {
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    color: var(--ink-soft);
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-  .research-venue .venue { font-family: var(--serif); font-style: italic; font-size: 0.85rem; }
-  .pub-link {
-    display: inline-block;
-    font-family: var(--mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.04em;
-    color: var(--teal);
-    text-decoration: none;
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 1px;
-    margin-bottom: 1rem;
-  }
-  .pub-link:hover, .pub-link:focus-visible { border-color: var(--teal); outline: none; }
+  .text-btn:hover { border-bottom-color: var(--olive); }
+  .text-btn svg { width: 12px; height: 12px; transition: transform 0.45s var(--ease); }
+  .text-btn[aria-expanded="true"] svg { transform: rotate(180deg); }
 
-  /* Publications */
-  .pub-group { margin-bottom: 2.75rem; }
+  /* ---------- Publications ---------- */
+  .filters { display: inline-flex; flex-wrap: wrap; gap: 0.4rem; padding: 0.35rem; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); margin-bottom: 2.75rem; }
+  .filters button {
+    font: 500 0.88rem/1 var(--sans); color: var(--ink-soft);
+    background: transparent; border: none; border-radius: 999px; padding: 0.65rem 1.05rem; cursor: pointer;
+    transition: background-color 0.35s var(--ease), color 0.35s var(--ease);
+  }
+  .filters button:hover { color: var(--ink); }
+  .filters button[aria-pressed="true"] { background: var(--olive); color: var(--paper); }
+  .filters .count { opacity: 0.7; margin-left: 0.3rem; font-weight: 400; }
+  .pub-group { margin-bottom: 3.25rem; }
   .pub-group:last-child { margin-bottom: 0; }
-  .pub-group h3 {
-    font-family: var(--serif);
-    font-size: 1.15rem;
-    font-weight: 600;
-    margin-bottom: 0.3rem;
-  }
+  .pub-group[hidden] { display: none; }
+  .pub-group.fade-in { animation: fadeIn 0.55s var(--ease); }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .pub-group h3 { font-family: var(--display); font-weight: 500; font-size: 1.7rem; margin-bottom: 0.4rem; }
   .pub-list { list-style: none; }
-  .pub-item {
-    padding: 1.1rem 0;
-    border-top: 1px solid var(--line);
-    font-size: 0.95rem;
+  .pub { padding: 1.35rem 0; border-top: 1px solid var(--line); font-size: 0.97rem; line-height: 1.65; }
+  .pub:first-child { border-top: none; }
+  .pub .self { font-weight: 600; color: var(--olive); }
+  .pub .venue { font-style: italic; }
+  .pub-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.4rem 1.5rem; margin-top: 0.45rem; }
+  .pub-meta { font-size: 0.86rem; color: var(--ink-soft); }
+  .pub-meta a { color: var(--olive); text-decoration-color: var(--line); text-underline-offset: 3px; transition: text-decoration-color 0.3s var(--ease); }
+  .pub-meta a:hover { text-decoration-color: var(--olive); }
+  .copy-cite {
+    font: 500 0.82rem/1 var(--sans); color: var(--ink-soft); background: none;
+    border: 1px solid var(--line); border-radius: 999px; padding: 0.45rem 0.8rem; cursor: pointer; white-space: nowrap;
+    transition: color 0.3s var(--ease), border-color 0.3s var(--ease), background-color 0.3s var(--ease);
   }
-  .pub-item:first-of-type { border-top: none; padding-top: 0.3rem; }
-  .pub-item .self { font-weight: 700; }
-  .pub-item .venue { font-family: var(--serif); font-style: italic; }
-  .pub-item a { color: var(--teal); }
-  .pub-meta {
-    display: block;
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    color: var(--ink-soft);
-    margin-top: 0.4rem;
+  .copy-cite:hover { color: var(--olive); border-color: var(--olive); background: var(--ivory); }
+
+  /* ---------- Awards ---------- */
+  .awards { list-style: none; border-top: 1px solid var(--line); }
+  .award { display: grid; grid-template-columns: 2.2rem minmax(0, 1fr) auto; gap: 1.25rem; align-items: start; padding: 1.5rem 0; border-bottom: 1px solid var(--line); }
+  .award-mark { width: 22px; height: 22px; margin-top: 0.3rem; color: var(--olive); }
+  .award strong { display: block; font-family: var(--display); font-weight: 500; font-size: 1.45rem; line-height: 1.25; }
+  .award-detail { display: block; color: var(--ink-soft); font-size: 0.93rem; margin-top: 0.25rem; max-width: 64ch; }
+  .award-year { font-size: 0.9rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; padding-top: 0.35rem; }
+  .award.featured .award-mark, .award.featured .award-year { color: var(--burgundy); }
+  .award.featured strong { color: var(--burgundy); }
+
+  /* ---------- CV band ---------- */
+  .cv-band { background: var(--olive-deep); color: var(--on-dark); padding: 6rem 0; transition: background-color 0.5s var(--ease); }
+  .cv-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2.5rem; align-items: end; }
+  .cv-band .section-title { color: var(--on-dark); }
+  .cv-band .section-title::after { background: var(--on-dark-soft); }
+  .cv-band p { color: var(--on-dark-soft); max-width: 52ch; margin-top: 1.1rem; }
+  .cv-actions { display: flex; flex-wrap: wrap; gap: 0.9rem; }
+  .btn-light { background: #FFFFFF; color: #2E3815; border-color: #FFFFFF; }
+  .btn-light:hover { background: #E9EEDC; border-color: #E9EEDC; transform: translateY(-1px); }
+  .btn-outline-light { background: transparent; color: #F3F5EC; border-color: rgba(243, 245, 236, 0.45); }
+  .btn-outline-light:hover { border-color: #F3F5EC; transform: translateY(-1px); }
+
+  /* ---------- Contact ---------- */
+  .contact-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: 4.5rem; align-items: start; }
+  .mail-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 1.2rem; padding: 1.4rem 0; border-bottom: 1px solid var(--line); }
+  .mail-row:first-of-type { border-top: 1px solid var(--line); }
+  .mail-label { width: 100%; font-size: 0.85rem; color: var(--ink-soft); }
+  .mail {
+    font-family: var(--display); font-size: clamp(1.35rem, 2.6vw, 1.9rem); line-height: 1.25;
+    text-decoration: none; overflow-wrap: anywhere;
+    background-image: linear-gradient(var(--olive), var(--olive)); background-size: 0% 1px; background-repeat: no-repeat; background-position: 0 100%;
+    transition: background-size 0.5s var(--ease), color 0.3s var(--ease);
+  }
+  .mail:hover { background-size: 100% 1px; color: var(--olive); }
+  .profiles h3 { font-family: var(--display); font-weight: 500; font-size: 1.5rem; margin-bottom: 1rem; }
+  .profile-list { list-style: none; display: grid; gap: 0.55rem; }
+  .profile {
+    display: flex; align-items: center; gap: 0.85rem;
+    padding: 0.8rem 1rem; border: 1px solid var(--line); border-radius: 10px;
+    text-decoration: none; font-size: 0.95rem; font-weight: 500;
+    transition: background-color 0.35s var(--ease), border-color 0.35s var(--ease), transform 0.35s var(--ease);
+  }
+  .profile:hover { background: var(--ivory); border-color: var(--olive); transform: translateX(3px); }
+  .profile svg { width: 18px; height: 18px; color: var(--olive); flex-shrink: 0; }
+  .profile .ext { margin-left: auto; width: 13px; height: 13px; color: var(--ink-soft); }
+
+  /* ---------- Footer ---------- */
+  footer { background: var(--olive-deep); color: var(--on-dark-soft); font-size: 0.86rem; padding: 2rem 0; border-top: 1px solid rgba(243, 245, 236, 0.1); transition: background-color 0.5s var(--ease); }
+  .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 2rem; }
+
+  /* ---------- Floating bits ---------- */
+  .to-top {
+    position: fixed; right: 1.5rem; bottom: 1.5rem; z-index: 40;
+    width: 46px; height: 46px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: var(--paper); color: var(--olive); border: 1px solid var(--line); box-shadow: var(--shadow);
+    cursor: pointer; opacity: 0; transform: translateY(10px); pointer-events: none;
+    transition: opacity 0.45s var(--ease), transform 0.45s var(--ease), background-color 0.3s var(--ease);
+  }
+  .to-top.show { opacity: 1; transform: none; pointer-events: auto; }
+  .to-top:hover { background: var(--mist); }
+  .to-top svg { width: 18px; height: 18px; }
+  .toast {
+    position: fixed; left: 50%; bottom: 1.75rem; z-index: 70;
+    transform: translate(-50%, 16px); opacity: 0; pointer-events: none;
+    background: var(--ink); color: var(--paper); font-size: 0.9rem; font-weight: 500;
+    padding: 0.75rem 1.2rem; border-radius: 999px; box-shadow: var(--shadow);
+    transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  /* Gentle section entrance */
+  .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+  .js .reveal.in { opacity: 1; transform: none; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 960px) {
+    .nav-links { gap: 1.4rem; }
+    .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .portrait-frame { justify-self: start; max-width: 300px; order: -1; margin: 14px 0 0 14px; }
+    .plate { grid-template-columns: 1fr; gap: 1.75rem; }
+    .interests { position: static; }
+    .work { grid-template-columns: 1fr; gap: 1rem; }
+    .cv-inner { grid-template-columns: 1fr; align-items: start; }
+  }
+  @media (max-width: 820px) {
+    .nav { display: none; }
+    .mobile-home { display: inline-block; }
+    .menu-toggle { display: inline-grid; place-content: center; }
+  }
+  @media (min-width: 821px) { .menu-panel { display: none; } }
+  @media (max-width: 600px) {
+    body { font-size: 16px; }
+    .wrap { padding: 0 1.25rem; }
+    .section { padding: 4.5rem 0; }
+    .hero { padding: 3rem 0 2.5rem; }
+    .portrait-frame { max-width: 230px; }
+    .plate { padding: 1.6rem 1.25rem; margin-top: 3.5rem; }
+    .filters { border-radius: 16px; }
+    .award { grid-template-columns: 1.6rem minmax(0, 1fr); gap: 0.9rem; }
+    .award-year { grid-column: 2; padding-top: 0; }
+    .cv-band { padding: 4.5rem 0; }
+    .to-top { right: 1rem; bottom: 1rem; }
   }
 
-  /* CV */
-  .cv-box {
-    background: var(--bg-card);
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 2.25rem;
-  }
-  .cv-box p { font-size: 0.98rem; color: var(--ink-soft); max-width: 55ch; }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: var(--mono);
-    font-size: 0.85rem;
-    background: var(--olive);
-    color: var(--bg);
-    text-decoration: none;
-    padding: 0.75rem 1.4rem;
-    border-radius: 4px;
-    margin-top: 1.25rem;
-    transition: background 0.15s ease;
-  }
-  .btn:hover, .btn:focus-visible { background: var(--olive-deep); outline: 2px solid var(--olive-deep); outline-offset: 2px; }
-
-  /* Contact */
-  .contact-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.7rem 1.9rem;
-    margin-top: 0.5rem;
-  }
-  .contact-profiles { margin-top: 1.1rem; }
-  .clink {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    font-family: var(--mono);
-    font-size: 0.86rem;
-    color: var(--ink);
-    text-decoration: none;
-    border-bottom: 1px solid var(--line);
-    padding-bottom: 3px;
-    transition: border-color 0.15s ease, color 0.15s ease;
-  }
-  .clink:hover, .clink:focus-visible { color: var(--teal); border-color: var(--teal); outline: none; }
-  .ci { width: 15px; height: 15px; flex-shrink: 0; }
-
-  footer {
-    background: var(--olive);
-    color: var(--olive-light);
-    font-family: var(--mono);
-    font-size: 0.75rem;
-    padding: 1.6rem 1.5rem 2rem;
-  }
-  footer p { max-width: var(--maxw); margin: 0 auto; }
-
-  /* Awards */
-  .award-list { list-style: none; }
-  .award-item {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 0.25rem 1.5rem;
-    padding: 1rem 0;
-    border-top: 1px solid var(--line);
-    font-size: 0.97rem;
-  }
-  .award-item:first-child { border-top: none; padding-top: 0.2rem; }
-  .award-item strong { font-weight: 600; }
-  .award-item .award-detail { display: block; font-size: 0.88rem; color: var(--ink-soft); margin-top: 0.15rem; }
-  .award-year { font-family: var(--mono); font-size: 0.78rem; color: var(--olive); white-space: nowrap; padding-top: 0.15rem; }
-  .award-item.featured {
-    background: var(--olive-light);
-    border: none;
-    border-radius: 6px;
-    padding: 1rem 1.1rem;
-    margin-bottom: 0.4rem;
-  }
-  .award-item.featured + .award-item { border-top: none; }
-  @media (max-width: 640px) {
-    .award-item { grid-template-columns: 1fr; }
-  }
-
-  /* Scroll reveal */
-  .reveal { opacity: 0; transform: translateY(14px); }
-  .reveal.in-view { opacity: 1; transform: translateY(0); transition: opacity 0.6s ease, transform 0.6s ease; }
   @media (prefers-reduced-motion: reduce) {
-    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; transition-delay: 0s !important; }
+    .js .reveal, .js .hero .rise { opacity: 1; transform: none; }
+    .js .draw .exon-r, .js .draw .retained { transform: none; }
+    .js .draw .intron-p { stroke-dashoffset: 0; }
   }
 
-  @media (max-width: 640px) {
-    section { padding: 3.25rem 0; }
-    .hero-head {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1.1rem;
-    }
-    .portrait { width: 118px; height: 118px; }
-    .hero-name { font-size: clamp(1.6rem, 8vw, 2.1rem); }
-    .hero-statement { text-align: left; hyphens: none; -webkit-hyphens: none; }
-    .about-text { font-size: 1.08rem; }
-    .iso-label { width: 4rem; font-size: 0.6rem; }
-    .exon-block { width: 30px; }
-    .hero-affiliation br { display: block; }
-    .site-nav { padding: 0.7rem 0.9rem; }
-    .nav-inner {
-      gap: 0.2rem;
-      -webkit-mask-image: linear-gradient(to right, #000 88%, transparent);
-      mask-image: linear-gradient(to right, #000 88%, transparent);
-      padding-right: 1.5rem;
-    }
-    .nav-inner.at-end { -webkit-mask-image: none; mask-image: none; }
-    .nav-mono-mark { margin-right: 0.4rem; padding-right: 0.5rem; }
-    .exon { font-size: 0.64rem; padding: 0.38rem 0.5rem; }
-    .intron { width: 14px; }
+  @media print {
+    .site-header, .progress, .to-top, .toast, .menu-panel, .filters, .copy-cite, .text-btn, .hero-actions { display: none !important; }
+    main { padding-top: 0; }
+    .more { grid-template-rows: 1fr; } .more > div > p { opacity: 1; }
+    .pub-group[hidden] { display: block; }
+    .js .reveal { opacity: 1; transform: none; }
+    .cv-band, footer { background: none; color: #000; }
   }
 </style>
 </head>
 <body>
+<a class="skip" href="#about">Skip to content</a>
+<div class="progress" aria-hidden="true"></div>
 
-<header class="site-nav">
-  <nav class="nav-inner" aria-label="Section navigation">
-    <a class="nav-mono-mark" href="#hero" aria-label="Back to top">Abbas</a>
-    <a href="#about" class="exon">ABOUT</a>
-    <svg class="intron" width="18" height="14" viewBox="0 0 18 14" aria-hidden="true"><path d="M2,7 H15 M10.5,2.5 L15,7 L10.5,11.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    <a href="#research" class="exon">RESEARCH</a>
-    <svg class="intron" width="18" height="14" viewBox="0 0 18 14" aria-hidden="true"><path d="M2,7 H15 M10.5,2.5 L15,7 L10.5,11.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    <a href="#publications" class="exon">PUBLICATIONS</a>
-    <svg class="intron" width="18" height="14" viewBox="0 0 18 14" aria-hidden="true"><path d="M2,7 H15 M10.5,2.5 L15,7 L10.5,11.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    <a href="#awards" class="exon">AWARDS</a>
-    <svg class="intron" width="18" height="14" viewBox="0 0 18 14" aria-hidden="true"><path d="M2,7 H15 M10.5,2.5 L15,7 L10.5,11.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    <a href="#cv" class="exon">CV</a>
-    <svg class="intron" width="18" height="14" viewBox="0 0 18 14" aria-hidden="true"><path d="M2,7 H15 M10.5,2.5 L15,7 L10.5,11.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    <a href="#contact" class="exon">CONTACT</a>
-  </nav>
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="mobile-home" href="#home">Home</a>
+    <nav class="nav" aria-label="Main">
+      <ul class="nav-links">
+        <li><a href="#home" data-section="home">Home</a></li>
+        <li><a href="#about" data-section="about">About</a></li>
+        <li><a href="#research" data-section="research">Research</a></li>
+        <li><a href="#publications" data-section="publications">Publications</a></li>
+        <li><a href="#awards" data-section="awards">Awards</a></li>
+        <li><a href="#cv" data-section="cv">CV</a></li>
+        <li><a href="#contact" data-section="contact">Contact</a></li>
+      </ul>
+      <span class="nav-indicator" aria-hidden="true"></span>
+    </nav>
+    <div class="bar-actions">
+      <button class="icon-btn theme-toggle" type="button" aria-label="Switch to dark theme">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6 6 6M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+      </button>
+      <button class="icon-btn menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu-panel">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
 </header>
+
+<div class="menu-panel" id="menu-panel" aria-label="Menu">
+  <ul>
+    <li><a href="#home" data-section="home">Home</a></li>
+    <li><a href="#about" data-section="about">About</a></li>
+    <li><a href="#research" data-section="research">Research</a></li>
+    <li><a href="#publications" data-section="publications">Publications</a></li>
+    <li><a href="#awards" data-section="awards">Awards</a></li>
+    <li><a href="#cv" data-section="cv">CV</a></li>
+    <li><a href="#contact" data-section="contact">Contact</a></li>
+  </ul>
+  <p class="menu-foot">Gödöllő, Hungary</p>
+</div>
 
 <main>
 
-  <section id="hero">
-    <span class="eyebrow">Plant Molecular Biologist<br>RNA Surveillance (NMD), Heat Stress Recovery and Thermomemory</span>
-    <div class="hero-head">
-      <img class="portrait" src="./portrait.jpg" width="450" height="450" alt="Portrait of Syed Hussam Abbas">
-      <h1 class="hero-name">Syed Hussam Abbas</h1>
-    </div>
-    <p class="hero-affiliation">
-      Plant Stress Biology Group, Genetics and Biotechnology Institute<br>
-      MATE University (Hungarian University of Agriculture and Life Sciences)<br>
-      Gödöllő, Hungary
-    </p>
-    <p class="hero-statement">I study how <em>Arabidopsis</em> plants recover from heat stress and remember it days later, and how nonsense-mediated decay and alternative splicing help them reset once the heat has passed.</p>
+  <!-- ================= HOME ================= -->
+  <section id="home" class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="hero-role rise" style="--i:0">Plant Molecular Biologist<span>RNA Surveillance (NMD), Heat Stress Recovery and Thermomemory</span></p>
+          <h1 class="hero-name rise" style="--i:1"><span>Syed Hussam</span><span class="last">Abbas</span></h1>
+          <p class="hero-affiliation rise" style="--i:2">
+            Plant Stress Biology Group, Genetics and Biotechnology Institute<br>
+            MATE University (Hungarian University of Agriculture and Life Sciences)<br>
+            Gödöllő, Hungary
+          </p>
+          <p class="hero-statement rise" style="--i:3">I study how <em>Arabidopsis</em> plants recover from heat stress and remember it days later, and how nonsense-mediated decay and alternative splicing help them reset once the heat has passed.</p>
+          <div class="hero-actions rise" style="--i:4">
+            <a class="btn btn-solid" href="./cv.pdf" download="CV_ABBAS.pdf">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M3 13.5h10"/></svg>
+              Download CV
+            </a>
+            <a class="btn btn-ghost" href="#contact">Get in touch</a>
+          </div>
+          <p class="status rise" style="--i:5">Open to postdoctoral opportunities</p>
+        </div>
 
-    <div class="isoform-diagram">
-      <div class="isoform-row">
-        <span class="iso-label">HSFA2-I</span>
-        <div class="iso-track">
-          <div class="exon-block"></div>
-          <svg class="intron-line" width="28" height="14" viewBox="0 0 28 14" aria-hidden="true"><path d="M1,11 L14,2 L27,11" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
-          <div class="exon-block"></div>
-          <svg class="intron-line" width="28" height="14" viewBox="0 0 28 14" aria-hidden="true"><path d="M1,11 L14,2 L27,11" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
-          <div class="exon-block"></div>
+        <div class="portrait-frame rise" style="--i:2">
+          <img class="portrait" src="./portrait.jpg" width="450" height="450" alt="Portrait of Syed Hussam Abbas">
         </div>
       </div>
-      <div class="isoform-row">
-        <span class="iso-label">HSFA2-II</span>
-        <div class="iso-track">
-          <div class="exon-block"></div>
-          <svg class="intron-line" width="72" height="20" viewBox="0 0 72 20" aria-hidden="true"><path d="M1,17 L36,2 L71,17" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
-          <div class="exon-block"></div>
+
+      <!-- HSFA2 isoform plate -->
+      <figure class="plate reveal">
+        <svg class="draw" viewBox="0 0 470 150" role="img" aria-labelledby="plate-t plate-d">
+          <title id="plate-t">HSFA2 splice isoforms</title>
+          <desc id="plate-d">Three simplified transcript models. HSFA2-I has three exons joined by two spliced introns. HSFA2-II has two exons joined by one long spliced intron. HSFA2-III keeps one intron (retained) between its first two exons.</desc>
+          <defs>
+            <pattern id="hatch" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+              <rect width="2" height="5" style="fill: var(--burgundy)"/>
+            </pattern>
+          </defs>
+
+          <g class="iso-row">
+            <rect class="row-hit" x="0" y="8" width="470" height="36"/>
+            <text x="0" y="31">HSFA2-I</text>
+            <rect class="exon-r" x="96" y="18" width="64" height="16" rx="3" style="--d:.15s"><title>Exon</title></rect>
+            <path class="intron-p" d="M160,26 L180,10 L200,26" style="--d:.35s"><title>Spliced intron</title></path>
+            <rect class="exon-r" x="200" y="18" width="64" height="16" rx="3" style="--d:.5s"><title>Exon</title></rect>
+            <path class="intron-p" d="M264,26 L284,10 L304,26" style="--d:.7s"><title>Spliced intron</title></path>
+            <rect class="exon-r" x="304" y="18" width="64" height="16" rx="3" style="--d:.85s"><title>Exon</title></rect>
+          </g>
+
+          <g class="iso-row">
+            <rect class="row-hit" x="0" y="52" width="470" height="36"/>
+            <text x="0" y="75">HSFA2-II</text>
+            <rect class="exon-r" x="96" y="62" width="64" height="16" rx="3" style="--d:.3s"><title>Exon</title></rect>
+            <path class="intron-p" d="M160,70 L232,50 L304,70" style="--d:.5s"><title>Spliced intron</title></path>
+            <rect class="exon-r" x="304" y="62" width="64" height="16" rx="3" style="--d:1s"><title>Exon</title></rect>
+          </g>
+
+          <g class="iso-row">
+            <rect class="row-hit" x="0" y="96" width="470" height="40"/>
+            <text x="0" y="119">HSFA2-III</text>
+            <rect class="exon-r" x="96" y="106" width="64" height="16" rx="3" style="--d:.45s"><title>Exon</title></rect>
+            <rect class="retained" x="160" y="106" width="64" height="16" rx="2" style="--d:.65s"><title>Retained intron</title></rect>
+            <rect class="exon-r" x="224" y="106" width="64" height="16" rx="3" style="--d:.85s"><title>Exon</title></rect>
+            <path class="intron-p" d="M288,114 L308,98 L328,114" style="--d:1.05s"><title>Spliced intron</title></path>
+            <rect class="exon-r" x="328" y="106" width="64" height="16" rx="3" style="--d:1.2s"><title>Exon</title></rect>
+          </g>
+        </svg>
+        <figcaption>
+          <p class="plate-title">Alternative splicing of HSFA2</p>
+          <p class="plate-caption">A simplified illustration of alternative splicing in HSFA2, the process at the centre of my thesis work. The burgundy block marks a retained intron, the kind of feature that can flag a transcript for nonsense-mediated decay.</p>
+          <ul class="legend" aria-hidden="true">
+            <li><span class="sw sw-exon"></span>Exon</li>
+            <li><svg class="sw sw-intron" viewBox="0 0 22 9"><path d="M1,8 L11,1 L21,8" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>Spliced intron</li>
+            <li><span class="sw sw-retained"></span>Retained intron</li>
+          </ul>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about" class="section tint">
+    <div class="wrap">
+      <div class="section-head reveal"><h2 class="section-title">About</h2></div>
+      <div class="about-grid">
+        <div class="prose reveal">
+          <p>I'm a Plant Molecular Biologist with 4+ years of experience in post-transcriptional gene regulation, RNA biology and plant stress responses. I'm currently working with Dr. Tibor Csorba in the Plant Stress Biology Group, Genetics and Biotechnology Institute, MATE University in Gödöllő, Hungary. My PhD work sits at the intersection of RNA surveillance (NMD pathway), alternative splicing, heat stress recovery and thermomemory in plants.</p>
+          <p>My work has been published in <span class="venue">The Plant Cell</span> and <span class="venue">The Plant Journal</span> on transcription fidelity, stress responses, and gene regulation in plants, with additional first-author research work submitted to <span class="venue">Plant and Cell Physiology</span>.</p>
+          <p>Beyond academia, the regulatory principles I work on (including RNA quality control, stress-responsive gene networks, isoform-level switches) translate directly into questions relevant to crop resilience, trait engineering and RNA-based biotechnology.</p>
+          <p>I'm currently seeking postdoctoral opportunities in RNA biology, plant stress responses, or gene regulation, where I can continue pushing at the interface of transcriptomics, molecular genetics and stress biology.</p>
+          <p class="closing">I believe science, at its best, is service to humankind!</p>
+        </div>
+        <aside class="interests reveal" aria-labelledby="int-h">
+          <h3 id="int-h">Core research interests</h3>
+          <ul>
+            <li>Post-transcriptional and translational regulation: alternative splicing, NMD pathway and RNA surveillance</li>
+            <li>Heat stress transcription factors (HSFA2, HSFA3) and thermomemory</li>
+            <li>Co-transcriptional regulation and transcription elongation fidelity</li>
+            <li>Autophagy and protein quality control: selective degradation and proteostasis during stress recovery</li>
+            <li>Post-translational modifications (PTMs) in stress regulatory networks</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RESEARCH ================= -->
+  <section id="research" class="section">
+    <div class="wrap">
+      <div class="section-head reveal"><h2 class="section-title">Research</h2></div>
+      <div class="works">
+
+        <article class="work reveal">
+          <div class="work-meta">
+            <span class="work-type">Journal article</span>
+            <span class="work-venue">Plant and Cell Physiology</span>
+            Submitted 2026
+          </div>
+          <div>
+            <h3>Nonsense-mediated decay promotes heat stress recovery independently of HsfA2/HsfA3 in <em>Arabidopsis</em></h3>
+            <p>Heat stress triggers alternative splicing of HSFA2, the master regulator of the heat shock response, generating several mRNA isoforms whose balance shifts through acclimation and recovery. This work maps how nonsense-mediated decay governs which of those isoforms accumulate, and what that means for how a plant remembers a heat event days after it ends.</p>
+            <div class="more" id="more-1"><div><p>The central finding is that NMD promotes recovery from heat stress through a route independent of both HsfA2 and HsfA3, so the decay machinery does more than clear faulty transcripts. It actively helps the plant reset. In NMD-deficient backgrounds the isoform patterns depart from what current AS-NMD models predict, pointing to further layers of regulation still to be described.</p></div></div>
+            <div class="work-actions">
+              <button class="text-btn" type="button" aria-expanded="false" aria-controls="more-1">Read more <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></button>
+            </div>
+          </div>
+        </article>
+
+        <article class="work reveal">
+          <div class="work-meta">
+            <span class="work-type">Journal article</span>
+            <span class="work-venue">The Plant Cell</span>
+            28 October 2025
+          </div>
+          <div>
+            <h3>Transcription fidelity and control of alternative splicing contribute to heat stress survival in <em>Arabidopsis</em></h3>
+            <p>We explored how heat stress disrupts transcription fidelity and alternative splicing in <em>Arabidopsis</em>, leading to a surge in transcription errors. We also uncovered how key transcription elongation factors such as TFIIS, together with the NMD pathway, work to correct these mistakes and keep gene expression accurate.</p>
+            <div class="more" id="more-2"><div><p>Together these mechanisms form an RNA quality control system that plants rely on when temperatures rise, giving a clearer picture of how they stay resilient in a warming world.</p></div></div>
+            <div class="work-actions">
+              <button class="text-btn" type="button" aria-expanded="false" aria-controls="more-2">Read more <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></button>
+              <a class="text-btn" href="https://doi.org/10.1093/plcell/koaf256" target="_blank" rel="noopener">Show publication</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="work reveal">
+          <div class="work-meta">
+            <span class="work-type">Journal article</span>
+            <span class="work-venue">The Plant Journal</span>
+            23 March 2025
+          </div>
+          <div>
+            <h3>INCREASED DNA METHYLATION 3 forms a potential chromatin remodelling complex with HAIRPLUS to regulate DNA methylation and trichome development in tomato</h3>
+            <p>Our findings establish the role of SlIDM3, a regulator of DNA methylation in tomato. Genome-edited <em>slidm3</em> mutants show a hairy phenotype with increased glandular trichomes, closely resembling the <em>hairplus</em> (<em>hap</em>) mutant.</p>
+            <div class="more" id="more-3"><div><p>Protein purification and methylation analysis revealed that SlIDM3 forms a chromatin remodelling complex with HAP, shaping methylation patterns and controlling trichome development. These insights into epigenetic regulation open routes for crop improvement.</p></div></div>
+            <div class="work-actions">
+              <button class="text-btn" type="button" aria-expanded="false" aria-controls="more-3">Read more <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></button>
+              <a class="text-btn" href="https://doi.org/10.1111/tpj.70085" target="_blank" rel="noopener">Show publication</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="work reveal">
+          <div class="work-meta">
+            <span class="work-type">Book chapter</span>
+            <span class="work-venue">Springer, Cham</span>
+            24 April 2025
+          </div>
+          <div>
+            <h3>Deciphering the Plants' Response to Flood-Induced Hypoxia and Anoxia at the Molecular Level</h3>
+            <p>This chapter examines how flooding, made more frequent by climate change, affects plant health. It focuses on the hormonal and molecular signalling that underpins flood tolerance, particularly ethylene and reactive oxygen species (ROS).</p>
+            <div class="more" id="more-4"><div><p>Dissecting these pathways clarifies how plants manage low-oxygen stress and points towards breeding or engineering flood-tolerant crops, which matters directly for food security in a changing climate.</p></div></div>
+            <div class="work-actions">
+              <button class="text-btn" type="button" aria-expanded="false" aria-controls="more-4">Read more <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></button>
+              <a class="text-btn" href="https://doi.org/10.1007/978-3-031-83068-6_5" target="_blank" rel="noopener">Show publication</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PUBLICATIONS ================= -->
+  <section id="publications" class="section tint">
+    <div class="wrap">
+      <div class="section-head reveal"><h2 class="section-title">Publications</h2></div>
+
+      <div class="filters reveal" role="group" aria-label="Filter publications">
+        <button type="button" data-filter="all" aria-pressed="true">All<span class="count">13</span></button>
+        <button type="button" data-filter="journal" aria-pressed="false">Journal articles<span class="count">3</span></button>
+        <button type="button" data-filter="chapter" aria-pressed="false">Book chapters<span class="count">1</span></button>
+        <button type="button" data-filter="abstract" aria-pressed="false">Conference abstracts<span class="count">9</span></button>
+      </div>
+
+      <div class="pub-group reveal" data-group="journal">
+        <h3>Journal articles</h3>
+        <ul class="pub-list">
+          <li class="pub">
+            <span class="pub-text"><span class="self">Abbas, S.H.</span>, Darkó, É., Erős, T., Csorba, T. (2026). Nonsense-mediated decay promotes heat stress recovery independently of HsfA2/HsfA3 in <em>Arabidopsis</em>.</span>
+            <div class="pub-foot"><span class="pub-meta">Manuscript submitted to <span class="venue">Plant and Cell Physiology</span></span><button class="copy-cite" type="button">Copy citation</button></div>
+          </li>
+          <li class="pub">
+            <span class="pub-text">Szaker, H.M.*, Verma, R.*, Szádeczky-Kardoss, I., Gál, N., <span class="self">Abbas, S.H.</span>, Darkó, É., Pettkó-Szandtner, A., Silhavy, D., Csorba, T. (2025). Transcription fidelity and control of alternative splicing contribute to heat stress survival in <em>Arabidopsis</em>. <span class="venue">The Plant Cell</span>, 37(11), koaf256.</span>
+            <div class="pub-foot"><span class="pub-meta"><a href="https://doi.org/10.1093/plcell/koaf256" target="_blank" rel="noopener">doi.org/10.1093/plcell/koaf256</a></span><button class="copy-cite" type="button">Copy citation</button></div>
+          </li>
+          <li class="pub">
+            <span class="pub-text">Nyikó, T., Gyula, P., Ráth, S., Sós-Hegedűs, A., Csorba, T., <span class="self">Abbas, S.H.</span>, Bóka, K., Pettkó-Szandtner, A., Móricz, Á.M., Molnár, B.P., Erdei, A.L., Szittya, G. (2025). INCREASED DNA METHYLATION 3 forms a potential chromatin remodelling complex with HAIRPLUS to regulate DNA methylation and trichome development in tomato. <span class="venue">The Plant Journal</span>, 121, e70085.</span>
+            <div class="pub-foot"><span class="pub-meta"><a href="https://doi.org/10.1111/tpj.70085" target="_blank" rel="noopener">doi.org/10.1111/tpj.70085</a></span><button class="copy-cite" type="button">Copy citation</button></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-group reveal" data-group="chapter">
+        <h3>Book chapters</h3>
+        <ul class="pub-list">
+          <li class="pub">
+            <span class="pub-text">Singh, K., <span class="self">Abbas, S.H.</span>, Singh, S., Iqbal, N., Kocsy, G., Pérez-Pérez, J.M., Riyazuddin, R. (2025). Deciphering the Plants' Response to Flood-Induced Hypoxia and Anoxia at the Molecular Level. In: Riyazuddin, R., Gupta, R., Ramteke, P.W., Sayyed, R. (eds) <span class="venue">Plant Flooding</span>. Plant in Challenging Environments, vol 6. Springer, Cham, pp. 93-112.</span>
+            <div class="pub-foot"><span class="pub-meta"><a href="https://doi.org/10.1007/978-3-031-83068-6_5" target="_blank" rel="noopener">doi.org/10.1007/978-3-031-83068-6_5</a></span><button class="copy-cite" type="button">Copy citation</button></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="pub-group reveal" data-group="abstract">
+        <h3>Conference abstracts</h3>
+        <ul class="pub-list">
+          <li class="pub">
+            <span class="pub-text"><span class="self">Abbas, S.H.</span>, Ahmed, I., Szaker, H.M., Csorba, T. <em>TFIIS</em> and <em>IWS1</em> orchestrate transcriptional homeostasis under heat stress in plants.</span>
+            <div class="pub-foot"><span class="pub-meta">Poster P17 · RECROP-PrimeSeedPower GenNext Training School: Building climate-resilient crops through stress priming and seed biology · Chania, Greece · 21-23 April 2026</span><button class="copy-cite" type="button">Copy citation</button></div>
+          </li>
+          <li class="pub">
+            <span class="pub-text"><span class="self">Abbas, S.H.</span>, Ahmed, I., Verma, R., Szaker, H.M., Csorba, T. Functional coupling of transcription elongation factors <em>TFIIS</em> and <em>IWS1</em> preserves RNA homeostasis under heat stress in <em>Arabidopsis thaliana</em>.</span>
+            <div class="pub-foot"><span class="pub-meta">Poster P-01 · EpiSeedLink International Conference 2026: Priming, Stress and Epigenetic Memory · Amsterdam, The Netherlands · 9-10 February 2026</span><button class="copy-cite" type="button">Copy citation</button></div>
+          </li>
+          <li class="pub">
+            <span class="pub-text"><span class="self">Abbas, S.H.</span>, Ahmed, I., Szaker, H.M., Csorba, T. Interplay between RNAPII transcription and co-transcriptional RNA processing during heat stress in plants.</span>
+            <div class="pub-foot"><span class="pub-meta">International Conference on Molecular Biology: Current Aspects and Prospects (ICMB2025) · Cluj-Napoca, Romania · 4-7 November 2025</span><button class="copy-cite" type="button">Copy citation</button></div>
+          </li>
+          <li class="pub">
+            <span class="pub-text"><span class="self">Abbas, S.H.</span>, Ahmed, I., Gál, N., Szaker, H.M., Csorba, T. Plant genetics under heat stress: building a climate-resilient future.</span>
+            <div class="pub-foot"><span class="pub-meta">R65 · 14th Students' Research Conference on Society, Technology and Solutions, E3UDRES2 Science Festival, Vidzeme University of Applied Sciences · Valmiera, Latvia · 15-17 October 2025</span><button class="copy-cite" type="button">Copy citation</button></div>
+          </li>
+          <li class="pub">
+            <span class="pub-text">Szaker, H.M., Verma, R., Szádeczky-Kardoss, I., <span class="self">Abbas, S.H.</span>, Pettkó-Szandtner, A., Silhavy, D., Csorba, T. Transcription fidelity control contributes to heat stress survival in <em>A. thaliana</em>.</span>
+            <div class="pub-foot"><span class="pub-meta">Oral O-18 · Plant Biology Europe 2025 · Budapest, Hungary · 26-28 June 2025 · ISBN 978-615-6833-02-0 · <a href="https://pbe2025-budapest.org/PBE2025_book_of_abstracts.pdf" target="_blank" rel="noopener">book of abstracts</a></span><button class="copy-cite" type="button">Copy citation</button></div>
+          </li>
+          <li class="pub">
+            <span class="pub-text">Szaker, H.M., Verma, R., Szádeczky-Kardoss, I., <span class="self">Abbas, S.H.</span>, Pettkó-Szandtner, A., Silhavy, D., Csorba, T. Transcription fidelity safeguarding contributes to heat stress survival in <em>A. thaliana</em>.</span>
+            <div class="pub-foot"><span class="pub-meta">Poster P181 · International Conference on Arabidopsis Research 2025 · Ghent, Belgium · 16-20 June 2025</span><button class="copy-cite" type="button">Copy citation</button></div>
+          </li>
+          <li class="pub">
+            <span class="pub-text">Szaker, H.M., Verma, R., Szádeczky-Kardoss, I., <span class="self">Abbas, S.H.</span>, Pettkó-Szandtner, A., Silhavy, D., Csorba, T. Transcription fidelity is needed for development and heat stress survival in <em>Arabidopsis</em>.</span>
+            <div class="pub-foot"><span class="pub-meta">Poster P80 · 19th Microsymposium on RNA Biology · Vienna BioCenter, Vienna, Austria · 7-9 May 2025</span><button class="copy-cite" type="button">Copy citation</button></div>
+          </li>
+          <li class="pub">
+            <span class="pub-text">Ahmed, I., Verma, R., Szádeczky-Kardoss, I., Szaker, H.M., <span class="self">Abbas, S.H.</span>, Csorba, T. Decoding the role of TFIIS in plant resilience to heat stress.</span>
+            <div class="pub-foot"><span class="pub-meta">GBI Napok Miniconference, Genetics and Biotechnology Institute, MATE University · Gödöllő, Hungary · 10-11 December 2024</span><button class="copy-cite" type="button">Copy citation</button></div>
+          </li>
+          <li class="pub">
+            <span class="pub-text">Szaker, H.M., Verma, R., Szádeczky-Kardoss, I., <span class="self">Abbas, S.H.</span>, Pettkó-Szandtner, A., Silhavy, D., Csorba, T. Transcriptome fidelity aids development and heat stress response in <em>Arabidopsis</em>.</span>
+            <div class="pub-foot"><span class="pub-meta">XXIII Genetikai Műhelyek Magyarországon Conference · Szeged, Hungary · 6 September 2024</span><button class="copy-cite" type="button">Copy citation</button></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AWARDS ================= -->
+  <section id="awards" class="section">
+    <div class="wrap">
+      <div class="section-head reveal"><h2 class="section-title">Awards and Scholarships</h2></div>
+      <ol class="awards reveal">
+        <li class="award featured">
+          <svg class="award-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><circle cx="12" cy="9" r="3"/><path d="M8.5 14 7 22l5-2.5L17 22l-1.5-8"/></svg>
+          <div><strong>Best Poster Award</strong><span class="award-detail">de.NBI Summer School: Bioinformatics for Proteomics, Ruhr-Universität Bochum, Germany. Poster on nonsense-mediated decay in heat stress recovery.</span></div>
+          <span class="award-year">2026</span>
+        </li>
+        <li class="award">
+          <svg class="award-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 14 7 22l5-2.5L17 22l-1.5-8"/></svg>
+          <div><strong>Best Publication Award</strong><span class="award-detail">GBI Day, Genetics and Biotechnology Institute, MATE University, Hungary</span></div>
+          <span class="award-year">2025</span>
+        </li>
+        <li class="award">
+          <svg class="award-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="6"/><path d="M8.5 14 7 22l5-2.5L17 22l-1.5-8"/></svg>
+          <div><strong>Best Poster Award</strong><span class="award-detail">E<sup>3</sup>UDRES<sup>2</sup> Science Festival, Valmiera, Latvia</span></div>
+          <span class="award-year">2025</span>
+        </li>
+        <li class="award">
+          <svg class="award-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5 12 5l9 4.5-9 4.5-9-4.5Z"/><path d="M7 11.5V16c3 2 7 2 10 0v-4.5"/></svg>
+          <div><strong>Stipendium Hungaricum Dissertation Scholarship</strong><span class="award-detail">Hungarian government scholarship for international doctoral researchers</span></div>
+          <span class="award-year"></span>
+        </li>
+        <li class="award">
+          <svg class="award-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5 12 5l9 4.5-9 4.5-9-4.5Z"/><path d="M7 11.5V16c3 2 7 2 10 0v-4.5"/></svg>
+          <div><strong>Stipendium Hungaricum Scholarship</strong><span class="award-detail">Hungarian government scholarship for international doctoral researchers</span></div>
+          <span class="award-year"></span>
+        </li>
+        <li class="award">
+          <svg class="award-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5 12 5l9 4.5-9 4.5-9-4.5Z"/><path d="M7 11.5V16c3 2 7 2 10 0v-4.5"/></svg>
+          <div><strong>Pannónia Mobility Scholarship</strong><span class="award-detail">Hungarian mobility award for international research activities</span></div>
+          <span class="award-year"></span>
+        </li>
+        <li class="award">
+          <svg class="award-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5 12 5l9 4.5-9 4.5-9-4.5Z"/><path d="M7 11.5V16c3 2 7 2 10 0v-4.5"/></svg>
+          <div><strong>Chief Minister's Merit Scholarship</strong><span class="award-detail">Competitive academic merit award, Pakistan</span></div>
+          <span class="award-year"></span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= CV ================= -->
+  <section id="cv" class="cv-band">
+    <div class="wrap cv-inner reveal">
+      <div>
+        <h2 class="section-title">Curriculum vitae</h2>
+        <p>The full CV covers research training, teaching, and outreach experience in more detail than fits here.</p>
+      </div>
+      <div class="cv-actions">
+        <a class="btn btn-light" href="./cv.pdf" download="CV_ABBAS.pdf">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M3 13.5h10"/></svg>
+          Download CV (PDF)
+        </a>
+        <a class="btn btn-outline-light" href="./cv.pdf" target="_blank" rel="noopener">View online</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact" class="section">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-lead">Happy to hear about collaborations, postdoctoral positions, or a good conversation about RNA and plants.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="reveal">
+          <div class="mail-row">
+            <span class="mail-label">University</span>
+            <a class="mail" href="mailto:abbas.syed.hussam@phd.uni-mate.hu">abbas.syed.hussam@phd.uni-mate.hu</a>
+            <button class="copy-cite" type="button" data-copy="abbas.syed.hussam@phd.uni-mate.hu">Copy</button>
+          </div>
+          <div class="mail-row">
+            <span class="mail-label">Personal</span>
+            <a class="mail" href="mailto:syedhussamabbas@gmail.com">syedhussamabbas@gmail.com</a>
+            <button class="copy-cite" type="button" data-copy="syedhussamabbas@gmail.com">Copy</button>
+          </div>
+        </div>
+        <div class="profiles reveal">
+          <h3>Profiles</h3>
+          <ul class="profile-list">
+            <li><a class="profile" href="https://orcid.org/0009-0003-0017-0157" target="_blank" rel="noopener">
+              <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8.2" fill="none" stroke="currentColor" stroke-width="1.2"/><text x="9" y="12.4" text-anchor="middle" fill="currentColor" font-family="Helvetica,Arial,sans-serif" font-size="8.5" font-weight="700">iD</text></svg>
+              ORCID<svg class="ext" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9"/></svg></a></li>
+            <li><a class="profile" href="https://www.linkedin.com/in/syed-hussam-abbas/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 18 18" aria-hidden="true"><rect x="0.8" y="0.8" width="16.4" height="16.4" rx="3" fill="none" stroke="currentColor" stroke-width="1.2"/><text x="9" y="12.6" text-anchor="middle" fill="currentColor" font-family="Helvetica,Arial,sans-serif" font-size="8.5" font-weight="700">in</text></svg>
+              LinkedIn<svg class="ext" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9"/></svg></a></li>
+            <li><a class="profile" href="https://www.researchgate.net/profile/Syed-Hussam-Abbas" target="_blank" rel="noopener">
+              <svg viewBox="0 0 18 18" aria-hidden="true"><rect x="0.8" y="0.8" width="16.4" height="16.4" rx="3" fill="none" stroke="currentColor" stroke-width="1.2"/><text x="9" y="12.4" text-anchor="middle" fill="currentColor" font-family="Helvetica,Arial,sans-serif" font-size="7.4" font-weight="700">RG</text></svg>
+              ResearchGate<svg class="ext" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9"/></svg></a></li>
+            <li><a class="profile" href="https://scholar.google.com/citations?user=6hijnwQAAAAJ" target="_blank" rel="noopener">
+              <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" aria-hidden="true"><path d="M1 7 9 2.5 17 7 9 11.5 1 7Z"/><path d="M4.5 9v4c2.5 2 6.5 2 9 0V9"/></svg>
+              Google Scholar<svg class="ext" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9"/></svg></a></li>
+            <li><a class="profile" href="https://bsky.app/profile/syedhussamabbas.bsky.social" target="_blank" rel="noopener">
+              <svg viewBox="0 0 600 530" aria-hidden="true"><path fill="currentColor" d="M135.72 44.03C202.216 93.951 273.74 195.17 300 249.49c26.262-54.316 97.782-155.54 164.28-205.46C512.26 8.009 590-19.862 590 68.825c0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.38-3.69-10.832-3.708-7.896-.017-2.936-1.193.516-3.707 7.896-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.45-163.25-81.433C20.15 217.613 9.997 86.535 9.997 68.825c0-88.687 77.742-60.816 125.72-24.795z"/></svg>
+              Bluesky<svg class="ext" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true"><path d="M4 2h6v6M10 2 3 9"/></svg></a></li>
+          </ul>
         </div>
       </div>
-      <div class="isoform-row">
-        <span class="iso-label">HSFA2-III</span>
-        <div class="iso-track">
-          <div class="exon-block"></div>
-          <div class="intron-retained" title="Retained intron"></div>
-          <div class="exon-block"></div>
-          <svg class="intron-line" width="28" height="14" viewBox="0 0 28 14" aria-hidden="true"><path d="M1,11 L14,2 L27,11" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>
-          <div class="exon-block"></div>
-        </div>
-      </div>
-      <p class="diagram-caption">A simplified illustration of alternative splicing in HSFA2, the process at the centre of my thesis work. The rust block marks a retained intron, the kind of feature that can flag a transcript for nonsense-mediated decay.</p>
-    </div>
-  </section>
-
-  <section id="about" class="reveal">
-    <span class="eyebrow">About</span>
-    <div class="about-text">
-      <p>I'm a Plant Molecular Biologist with 4+ years of experience in post-transcriptional gene regulation, RNA biology and plant stress responses. I'm currently working with Dr. Tibor Csorba in the Plant Stress Biology Group, Genetics and Biotechnology Institute, MATE University in G&#246;d&#246;ll&#337;, Hungary. My PhD work sits at the intersection of RNA surveillance (NMD pathway), alternative splicing, heat stress recovery and thermomemory in plants.</p>
-
-      <p>My core research interests include:</p>
-      <ul class="interest-list">
-        <li>Post-transcriptional and translational regulation: alternative splicing, NMD pathway and RNA surveillance</li>
-        <li>Heat stress transcription factors (HSFA2, HSFA3) and thermomemory</li>
-        <li>Co-transcriptional regulation and transcription elongation fidelity</li>
-        <li>Autophagy and protein quality control: selective degradation and proteostasis during stress recovery</li>
-        <li>Post-translational modifications (PTMs) in stress regulatory networks</li>
-      </ul>
-
-      <p>My work has been published in <span class="venue">The Plant Cell</span> and <span class="venue">The Plant Journal</span> on transcription fidelity, stress responses, and gene regulation in plants, with additional first-author research work submitted to <span class="venue">Plant and Cell Physiology</span>.</p>
-
-      <p>Beyond academia, the regulatory principles I work on (including RNA quality control, stress-responsive gene networks, isoform-level switches) translate directly into questions relevant to crop resilience, trait engineering and RNA-based biotechnology.</p>
-
-      <p>I'm currently seeking postdoctoral opportunities in RNA biology, plant stress responses, or gene regulation, where I can continue pushing at the interface of transcriptomics, molecular genetics and stress biology.</p>
-
-      <p>I believe science, at its best, is service to humankind! :)</p>
-    </div>
-  </section>
-
-  <section id="research" class="reveal">
-    <span class="eyebrow">Research</span>
-    <div class="research-grid">
-
-      <div class="research-card">
-        <span class="research-card-label">Journal article</span>
-        <h3>Nonsense-mediated decay balances <em>HSFA2</em> isoforms and promotes heat stress recovery in <em>Arabidopsis</em></h3>
-        <span class="research-venue"><span class="venue">Plant and Cell Physiology</span> &middot; Submitted 2026</span>
-        <p>Heat stress triggers alternative splicing of HSFA2, the master regulator of the heat shock response and thermomemory, generating several mRNA isoforms whose balance shifts through acclimation and recovery. This work shows that nonsense-mediated decay sets the balance between these isoforms.</p>
-        <p>The central finding is that NMD-deficient plants recover poorly after heat stress, so the decay machinery does more than clear faulty transcripts. It actively helps the plant reset once the heat has passed. In NMD-deficient backgrounds the isoform patterns depart from what current AS-NMD models predict, pointing to further layers of regulation still to be described.</p>
-      </div>
-
-      <div class="research-card">
-        <span class="research-card-label">Journal article</span>
-        <h3>Transcription fidelity and control of alternative splicing contribute to heat stress survival in <em>Arabidopsis</em></h3>
-        <span class="research-venue"><span class="venue">The Plant Cell</span> &middot; 28 October 2025</span>
-        <a class="pub-link" href="https://doi.org/10.1093/plcell/koaf256" target="_blank" rel="noopener">Show publication &#8594;</a>
-        <p>We explored how heat stress disrupts transcription fidelity and alternative splicing in <em>Arabidopsis</em>, leading to a surge in transcription errors. We also uncovered how key transcription elongation factors such as TFIIS, together with the NMD pathway, work to correct these mistakes and keep gene expression accurate.</p>
-        <p>Together these mechanisms form an RNA quality control system that plants rely on when temperatures rise, giving a clearer picture of how they stay resilient in a warming world.</p>
-      </div>
-
-      <div class="research-card">
-        <span class="research-card-label">Journal article</span>
-        <h3>INCREASED DNA METHYLATION 3 forms a potential chromatin remodelling complex with HAIRPLUS to regulate DNA methylation and trichome development in tomato</h3>
-        <span class="research-venue"><span class="venue">The Plant Journal</span> &middot; 23 March 2025</span>
-        <a class="pub-link" href="https://doi.org/10.1111/tpj.70085" target="_blank" rel="noopener">Show publication &#8594;</a>
-        <p>Our findings establish the role of SlIDM3, a regulator of DNA methylation in tomato. Genome-edited <em>slidm3</em> mutants show a hairy phenotype with increased glandular trichomes, closely resembling the <em>hairplus</em> (<em>hap</em>) mutant.</p>
-        <p>Protein purification and methylation analysis revealed that SlIDM3 forms a chromatin remodelling complex with HAP, shaping methylation patterns and controlling trichome development. These insights into epigenetic regulation open routes for crop improvement.</p>
-      </div>
-
-      <div class="research-card">
-        <span class="research-card-label">Book chapter</span>
-        <h3>Deciphering the Plants' Response to Flood-Induced Hypoxia and Anoxia at the Molecular Level</h3>
-        <span class="research-venue">Springer, Cham &middot; 24 April 2025</span>
-        <a class="pub-link" href="https://doi.org/10.1007/978-3-031-83068-6_5" target="_blank" rel="noopener">Show publication &#8594;</a>
-        <p>This chapter examines how flooding, made more frequent by climate change, affects plant health. It focuses on the hormonal and molecular signalling that underpins flood tolerance, particularly ethylene and reactive oxygen species (ROS).</p>
-        <p>Dissecting these pathways clarifies how plants manage low-oxygen stress and points towards breeding or engineering flood-tolerant crops, which matters directly for food security in a changing climate.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="publications" class="reveal">
-    <span class="eyebrow">Publications</span>
-
-    <div class="pub-group">
-      <h3>Journal articles</h3>
-      <ul class="pub-list">
-        <li class="pub-item">
-          <span class="self">Abbas, S.H.</span>, Dark&#243;, &#201;., Er&#337;s, T., Csorba, T. (2026). Nonsense-mediated decay balances <em>HSFA2</em> isoforms and promotes heat stress recovery in <em>Arabidopsis</em>.
-          <span class="pub-meta">Manuscript submitted to <span class="venue">Plant and Cell Physiology</span></span>
-        </li>
-        <li class="pub-item">
-          Szaker, H.M.*, Verma, R.*, Sz&#225;deczky-Kardoss, I., G&#225;l, N., <span class="self">Abbas, S.H.</span>, Dark&#243;, &#201;., Pettk&#243;-Szandtner, A., Silhavy, D., Csorba, T. (2025). Transcription fidelity and control of alternative splicing contribute to heat stress survival in <em>Arabidopsis</em>. <span class="venue">The Plant Cell</span>, 37(11), koaf256.
-          <span class="pub-meta"><a href="https://doi.org/10.1093/plcell/koaf256" target="_blank" rel="noopener">doi.org/10.1093/plcell/koaf256</a></span>
-        </li>
-        <li class="pub-item">
-          Nyik&#243;, T., Gyula, P., R&#225;th, S., S&#243;s-Heged&#369;s, A., Csorba, T., <span class="self">Abbas, S.H.</span>, B&#243;ka, K., Pettk&#243;-Szandtner, A., M&#243;ricz, &#193;.M., Moln&#225;r, B.P., Erdei, A.L., Szittya, G. (2025). INCREASED DNA METHYLATION 3 forms a potential chromatin remodelling complex with HAIRPLUS to regulate DNA methylation and trichome development in tomato. <span class="venue">The Plant Journal</span>, 121, e70085.
-          <span class="pub-meta"><a href="https://doi.org/10.1111/tpj.70085" target="_blank" rel="noopener">doi.org/10.1111/tpj.70085</a></span>
-        </li>
-      </ul>
-    </div>
-
-    <div class="pub-group">
-      <h3>Book chapters</h3>
-      <ul class="pub-list">
-        <li class="pub-item">
-          Singh, K., <span class="self">Abbas, S.H.</span>, Singh, S., Iqbal, N., Kocsy, G., P&#233;rez-P&#233;rez, J.M., Riyazuddin, R. (2025). Deciphering the Plants' Response to Flood-Induced Hypoxia and Anoxia at the Molecular Level. In: Riyazuddin, R., Gupta, R., Ramteke, P.W., Sayyed, R. (eds) <span class="venue">Plant Flooding</span>. Plant in Challenging Environments, vol 6. Springer, Cham, pp. 93-112.
-          <span class="pub-meta"><a href="https://doi.org/10.1007/978-3-031-83068-6_5" target="_blank" rel="noopener">doi.org/10.1007/978-3-031-83068-6_5</a></span>
-        </li>
-      </ul>
-    </div>
-
-    <div class="pub-group">
-      <h3>Conference abstracts</h3>
-      <ul class="pub-list">
-        <li class="pub-item">
-          <span class="self">Abbas, S.H.</span>, Ahmed, I., Szaker, H.M., Csorba, T. <em>TFIIS</em> and <em>IWS1</em> orchestrate transcriptional homeostasis under heat stress in plants.
-          <span class="pub-meta">Poster P17 &middot; RECROP-PrimeSeedPower GenNext Training School: Building climate-resilient crops through stress priming and seed biology &middot; Chania, Greece &middot; 21-23 April 2026</span>
-        </li>
-        <li class="pub-item">
-          <span class="self">Abbas, S.H.</span>, Ahmed, I., Verma, R., Szaker, H.M., Csorba, T. Functional coupling of transcription elongation factors <em>TFIIS</em> and <em>IWS1</em> preserves RNA homeostasis under heat stress in <em>Arabidopsis thaliana</em>.
-          <span class="pub-meta">Poster P-01 &middot; EpiSeedLink International Conference 2026: Priming, Stress and Epigenetic Memory &middot; Amsterdam, The Netherlands &middot; 9-10 February 2026</span>
-        </li>
-        <li class="pub-item">
-          <span class="self">Abbas, S.H.</span>, Ahmed, I., Szaker, H.M., Csorba, T. Interplay between RNAPII transcription and co-transcriptional RNA processing during heat stress in plants.
-          <span class="pub-meta">International Conference on Molecular Biology: Current Aspects and Prospects (ICMB2025) &middot; Cluj-Napoca, Romania &middot; 4-7 November 2025</span>
-        </li>
-        <li class="pub-item">
-          <span class="self">Abbas, S.H.</span>, Ahmed, I., G&#225;l, N., Szaker, H.M., Csorba, T. Plant genetics under heat stress: building a climate-resilient future.
-          <span class="pub-meta">R65 &middot; 14th Students' Research Conference on Society, Technology and Solutions, E3UDRES2 Science Festival, Vidzeme University of Applied Sciences &middot; Valmiera, Latvia &middot; 15-17 October 2025</span>
-        </li>
-        <li class="pub-item">
-          Szaker, H.M., Verma, R., Sz&#225;deczky-Kardoss, I., <span class="self">Abbas, S.H.</span>, Pettk&#243;-Szandtner, A., Silhavy, D., Csorba, T. Transcription fidelity control contributes to heat stress survival in <em>A. thaliana</em>.
-          <span class="pub-meta">Oral O-18 &middot; Plant Biology Europe 2025 &middot; Budapest, Hungary &middot; 26-28 June 2025 &middot; ISBN 978-615-6833-02-0 &middot; <a href="https://pbe2025-budapest.org/PBE2025_book_of_abstracts.pdf" target="_blank" rel="noopener">book of abstracts</a></span>
-        </li>
-        <li class="pub-item">
-          Szaker, H.M., Verma, R., Sz&#225;deczky-Kardoss, I., <span class="self">Abbas, S.H.</span>, Pettk&#243;-Szandtner, A., Silhavy, D., Csorba, T. Transcription fidelity safeguarding contributes to heat stress survival in <em>A. thaliana</em>.
-          <span class="pub-meta">Poster P181 &middot; International Conference on Arabidopsis Research 2025 &middot; Ghent, Belgium &middot; 16-20 June 2025</span>
-        </li>
-        <li class="pub-item">
-          Szaker, H.M., Verma, R., Sz&#225;deczky-Kardoss, I., <span class="self">Abbas, S.H.</span>, Pettk&#243;-Szandtner, A., Silhavy, D., Csorba, T. Transcription fidelity is needed for development and heat stress survival in <em>Arabidopsis</em>.
-          <span class="pub-meta">Poster P80 &middot; 19th Microsymposium on RNA Biology &middot; Vienna BioCenter, Vienna, Austria &middot; 7-9 May 2025</span>
-        </li>
-        <li class="pub-item">
-          Ahmed, I., Verma, R., Sz&#225;deczky-Kardoss, I., Szaker, H.M., <span class="self">Abbas, S.H.</span>, Csorba, T. Decoding the role of TFIIS in plant resilience to heat stress.
-          <span class="pub-meta">GBI Napok Miniconference, Genetics and Biotechnology Institute, MATE University &middot; G&#246;d&#246;ll&#337;, Hungary &middot; 10-11 December 2024</span>
-        </li>
-        <li class="pub-item">
-          Szaker, H.M., Verma, R., Sz&#225;deczky-Kardoss, I., <span class="self">Abbas, S.H.</span>, Pettk&#243;-Szandtner, A., Silhavy, D., Csorba, T. Transcriptome fidelity aids development and heat stress response in <em>Arabidopsis</em>.
-          <span class="pub-meta">XXIII Genetikai M&#369;helyek Magyarorsz&#225;gon Conference &middot; Szeged, Hungary &middot; 6 September 2024</span>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="awards" class="reveal">
-    <span class="eyebrow">Awards and Scholarships</span>
-    <ul class="award-list">
-      <li class="award-item featured">
-        <div><strong>Best Poster Award</strong><span class="award-detail">de.NBI Summer School: Bioinformatics for Proteomics, Ruhr-Universit&#228;t Bochum, Germany. Poster on nonsense-mediated decay in heat stress recovery.</span></div>
-        <span class="award-year">2026</span>
-      </li>
-      <li class="award-item">
-        <div><strong>Best Publication Award</strong><span class="award-detail">GBI Day, Genetics and Biotechnology Institute, MATE University, Hungary</span></div>
-        <span class="award-year">2025</span>
-      </li>
-      <li class="award-item">
-        <div><strong>Best Poster Award</strong><span class="award-detail">E<sup>3</sup>UDRES<sup>2</sup> Science Festival, Valmiera, Latvia</span></div>
-        <span class="award-year">2025</span>
-      </li>
-      <li class="award-item">
-        <div><strong>Stipendium Hungaricum Dissertation Scholarship</strong><span class="award-detail">Hungarian government scholarship for international doctoral researchers</span></div>
-        <span class="award-year"></span>
-      </li>
-      <li class="award-item">
-        <div><strong>Stipendium Hungaricum Scholarship</strong><span class="award-detail">Hungarian government scholarship for international doctoral researchers</span></div>
-        <span class="award-year"></span>
-      </li>
-      <li class="award-item">
-        <div><strong>Pann&#243;nia Mobility Scholarship</strong><span class="award-detail">Hungarian mobility award for international research activities</span></div>
-        <span class="award-year"></span>
-      </li>
-      <li class="award-item">
-        <div><strong>Chief Minister's Merit Scholarship</strong><span class="award-detail">Competitive academic merit award, Pakistan</span></div>
-        <span class="award-year"></span>
-      </li>
-    </ul>
-  </section>
-
-  <section id="cv" class="reveal">
-    <span class="eyebrow">CV</span>
-    <div class="cv-box">
-      <p>The full CV covers research training, teaching, and outreach experience in more detail than fits here.</p>
-      <a class="btn" href="./cv.pdf" download="CV_ABBAS.pdf">Download CV (PDF) &#8595;</a>
-    </div>
-  </section>
-
-  <section id="contact" class="reveal">
-    <span class="eyebrow">Contact</span>
-
-    <div class="contact-row">
-      <a class="clink" href="mailto:abbas.syed.hussam@phd.uni-mate.hu"><svg class="ci" viewBox="0 0 16 16" aria-hidden="true"><rect x="0.5" y="2.5" width="15" height="11" rx="2" fill="#2F6FAB"/><path d="M1.8 4.2 L8 8.7 L14.2 4.2" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>abbas.syed.hussam@phd.uni-mate.hu</a>
-      <a class="clink" href="mailto:syedhussamabbas@gmail.com"><svg class="ci" viewBox="0 0 16 16" aria-hidden="true"><rect x="0.5" y="2.5" width="15" height="11" rx="2" fill="#2F6FAB"/><path d="M1.8 4.2 L8 8.7 L14.2 4.2" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>syedhussamabbas@gmail.com</a>
-    </div>
-
-    <div class="contact-row contact-profiles">
-      <a class="clink" href="https://orcid.org/0009-0003-0017-0157" target="_blank" rel="noopener"><svg class="ci" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="8" fill="#A6CE39"/><text x="8" y="11.6" text-anchor="middle" fill="#fff" font-family="Helvetica,Arial,sans-serif" font-size="9.5" font-weight="700">iD</text></svg>ORCID</a>
-      <a class="clink" href="https://www.linkedin.com/in/syed-hussam-abbas/" target="_blank" rel="noopener"><svg class="ci" viewBox="0 0 16 16" aria-hidden="true"><rect width="16" height="16" rx="2.6" fill="#0A66C2"/><text x="8" y="11.6" text-anchor="middle" fill="#fff" font-family="Helvetica,Arial,sans-serif" font-size="9" font-weight="700">in</text></svg>LinkedIn</a>
-      <a class="clink" href="https://www.researchgate.net/profile/Syed-Hussam-Abbas" target="_blank" rel="noopener"><svg class="ci" viewBox="0 0 16 16" aria-hidden="true"><rect width="16" height="16" rx="2.6" fill="#00CCBB"/><text x="8" y="11.4" text-anchor="middle" fill="#fff" font-family="Helvetica,Arial,sans-serif" font-size="8.2" font-weight="700">RG</text></svg>ResearchGate</a>
-      <a class="clink" href="https://scholar.google.com/citations?user=6hijnwQAAAAJ" target="_blank" rel="noopener"><svg class="ci" viewBox="0 0 16 16" aria-hidden="true"><polygon points="8,1.6 15.2,5.6 8,9.6 0.8,5.6" fill="#4285F4"/><path d="M4.3 7.3 V11.4 Q8 14.2 11.7 11.4 V7.3" fill="none" stroke="#4285F4" stroke-width="1.6" stroke-linecap="round"/></svg>Google Scholar</a>
-      <a class="clink" href="https://bsky.app/profile/syedhussamabbas.bsky.social" target="_blank" rel="noopener"><svg class="ci" viewBox="0 0 600 530" aria-hidden="true"><path fill="#1185FE" d="M135.72 44.03C202.216 93.951 273.74 195.17 300 249.49c26.262-54.316 97.782-155.54 164.28-205.46C512.26 8.009 590-19.862 590 68.825c0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.38-3.69-10.832-3.708-7.896-.017-2.936-1.193.516-3.707 7.896-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.45-163.25-81.433C20.15 217.613 9.997 86.535 9.997 68.825c0-88.687 77.742-60.816 125.72-24.795z"/></svg>Bluesky</a>
     </div>
   </section>
 
 </main>
 
-<footer><p>&copy; 2026 Syed Hussam Abbas</p></footer>
+<footer>
+  <div class="wrap foot">
+    <p>© 2026 Syed Hussam Abbas</p>
+    <p>Gödöllő, Hungary</p>
+  </div>
+</footer>
+
+<button class="to-top" type="button" aria-label="Back to top">
+  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 13.5V3M4 7l4-4 4 4"/></svg>
+</button>
+<div class="toast" role="status" aria-live="polite"></div>
 
 <script>
-  // Highlight the nav exon for the section currently in view
-  (function () {
-    var links = Array.prototype.slice.call(document.querySelectorAll('.exon'));
-    var ids = links.map(function (a) { return a.getAttribute('href').slice(1); });
-    var sections = ids.map(function (id) { return document.getElementById(id); });
+(function () {
+  var doc = document.documentElement;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    function sync() {
-      var mark = window.innerHeight * 0.35;
-      var current = -1;
-      for (var i = 0; i < sections.length; i++) {
-        if (sections[i] && sections[i].getBoundingClientRect().top <= mark) { current = i; }
-      }
-      links.forEach(function (a, i) { a.classList.toggle('active', i === current); });
-      if (current !== last && current >= 0) {
-        var a = links[current];
-        var target = a.offsetLeft - nav.clientWidth / 2 + a.offsetWidth / 2;
-        nav.scrollTo({ left: Math.max(0, target), behavior: reduce ? 'auto' : 'smooth' });
-      }
-      last = current;
+  /* ---------- Page entrance ---------- */
+  window.addEventListener('load', function () {
+    requestAnimationFrame(function () { document.body.classList.add('loaded'); });
+  });
+  setTimeout(function () { document.body.classList.add('loaded'); }, 1200); // safety net
+
+  /* ---------- Theme toggle ---------- */
+  var themeBtn = document.querySelector('.theme-toggle');
+  function setThemeLabel() {
+    var dark = doc.getAttribute('data-theme') === 'dark';
+    themeBtn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+  }
+  setThemeLabel();
+  themeBtn.addEventListener('click', function () {
+    var next = doc.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    doc.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    setThemeLabel();
+  });
+
+  /* ---------- Mobile menu ---------- */
+  var menuBtn = document.querySelector('.menu-toggle');
+  function setMenu(open) {
+    document.body.classList.toggle('menu-open', open);
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  menuBtn.addEventListener('click', function () { setMenu(!document.body.classList.contains('menu-open')); });
+  document.querySelectorAll('.menu-panel a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+  window.addEventListener('resize', function () { if (window.innerWidth > 820) setMenu(false); });
+
+  /* ---------- Scroll: progress, header, active section, back to top ---------- */
+  var header = document.querySelector('.site-header');
+  var progress = document.querySelector('.progress');
+  var toTop = document.querySelector('.to-top');
+  var indicator = document.querySelector('.nav-indicator');
+  var ids = ['home', 'about', 'research', 'publications', 'awards', 'cv', 'contact'];
+  var sections = ids.map(function (id) { return document.getElementById(id); });
+  var navLinks = document.querySelectorAll('[data-section]');
+  var current = null;
+
+  function moveIndicator(id) {
+    var link = document.querySelector('.nav-links a[data-section="' + id + '"]');
+    if (!link || !indicator) return;
+    indicator.style.width = link.offsetWidth + 'px';
+    indicator.style.transform = 'translateX(' + link.offsetLeft + 'px)';
+    indicator.style.opacity = '1';
+  }
+
+  function onScroll() {
+    var y = window.scrollY;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0) + ')';
+    header.classList.toggle('scrolled', y > 8);
+    toTop.classList.toggle('show', y > window.innerHeight * 0.9);
+
+    var mark = window.innerHeight * 0.4;
+    var id = ids[0];
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i] && sections[i].getBoundingClientRect().top <= mark) id = ids[i];
     }
-    var nav = document.querySelector('.nav-inner');
-    var last = -2;
-    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    function edge() { nav.classList.toggle('at-end', nav.scrollLeft + nav.clientWidth >= nav.scrollWidth - 4); }
-    nav.addEventListener('scroll', edge, { passive: true });
-    window.addEventListener('resize', edge);
-    edge();
-
-    var queued = false;
-    window.addEventListener('scroll', function () {
-      if (queued) return;
-      queued = true;
-      window.requestAnimationFrame(function () { sync(); queued = false; });
-    }, { passive: true });
-    window.addEventListener('resize', sync);
-    sync();
-  })();
-
-  (function () {
-    var els = document.querySelectorAll('.reveal');
-    if (!('IntersectionObserver' in window)) {
-      els.forEach(function (el) { el.classList.add('in-view'); });
-      return;
-    }
-    var obs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          obs.unobserve(entry.target);
-        }
+    if (y >= max - 4) id = ids[ids.length - 1];
+    if (id !== current) {
+      current = id;
+      navLinks.forEach(function (a) {
+        var on = a.getAttribute('data-section') === id;
+        a.classList.toggle('active', on);
+        if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
       });
-    }, { threshold: 0.1 });
-    els.forEach(function (el) { obs.observe(el); });
-  })();
-</script>
+      moveIndicator(id);
+    }
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () { onScroll(); ticking = false; });
+  }, { passive: true });
+  window.addEventListener('resize', function () { current = null; onScroll(); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { current = null; onScroll(); });
+  onScroll();
 
+  toTop.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+  });
+
+  /* ---------- Research: read more ---------- */
+  document.querySelectorAll('.text-btn[aria-controls]').forEach(function (btn) {
+    var panel = document.getElementById(btn.getAttribute('aria-controls'));
+    panel.setAttribute('aria-hidden', 'true');
+    btn.addEventListener('click', function () {
+      var open = btn.getAttribute('aria-expanded') !== 'true';
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      panel.classList.toggle('open', open);
+      panel.setAttribute('aria-hidden', open ? 'false' : 'true');
+      btn.firstChild.nodeValue = open ? 'Show less ' : 'Read more ';
+    });
+  });
+
+  /* ---------- Publications: filter ---------- */
+  var filterBtns = document.querySelectorAll('.filters button');
+  var groups = document.querySelectorAll('.pub-group');
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var f = btn.getAttribute('data-filter');
+      filterBtns.forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+      groups.forEach(function (g) {
+        var show = f === 'all' || g.getAttribute('data-group') === f;
+        g.hidden = !show;
+        g.classList.remove('fade-in');
+        if (show) { void g.offsetWidth; g.classList.add('fade-in'); g.classList.add('in'); }
+      });
+    });
+  });
+
+  /* ---------- Copy citation / email ---------- */
+  var toast = document.querySelector('.toast');
+  var toastTimer;
+  function showToast(msg) {
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 2200);
+  }
+  function copyText(text, done) {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done, function () { fallback(text, done); });
+    } else { fallback(text, done); }
+  }
+  function fallback(text, done) {
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); done(); } catch (e) { showToast('Copy did not work. Select the text and copy it by hand.'); }
+    document.body.removeChild(ta);
+  }
+  document.querySelectorAll('.copy-cite').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var direct = btn.getAttribute('data-copy');
+      if (direct) { copyText(direct, function () { showToast('Email address copied'); }); return; }
+      var item = btn.closest('.pub');
+      var text = item.querySelector('.pub-text').textContent.replace(/\s+/g, ' ').trim();
+      var meta = item.querySelector('.pub-meta');
+      if (meta) {
+        var m = meta.textContent.replace(/\s+/g, ' ').trim();
+        text += ' ' + (/^doi\.org/.test(m) ? 'https://' + m : m);
+      }
+      copyText(text, function () { showToast('Citation copied'); });
+    });
+  });
+
+  /* ---------- Gentle reveals and gene model drawing ---------- */
+  var reveals = document.querySelectorAll('.reveal');
+  var draw = document.querySelector('.draw');
+  if (!('IntersectionObserver' in window) || reduce) {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+    if (draw) draw.classList.add('go');
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      if (e.target.querySelector('.draw')) setTimeout(function () { draw.classList.add('go'); }, 250);
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(function (el) { io.observe(el); });
+})();
+</script>
 </body>
 </html>
