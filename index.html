@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,8 +13,7 @@
 <meta property="og:url" content="https://syedhussamabbas.github.io/">
 <meta property="og:image" content="https://syedhussamabbas.github.io/portrait.jpg">
 <meta name="twitter:card" content="summary">
-<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#12160C" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#12160C" id="theme-color-meta">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='31' fill='%234B5A24'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Georgia,serif' font-size='28' fill='%23FFFFFF'%3EHA%3C/text%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +26,7 @@
   (function () {
     var t = null;
     try { t = localStorage.getItem('theme'); } catch (e) {}
-    if (!t) t = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    if (t !== 'light' && t !== 'dark') t = 'dark'; // dark by default; visitors can switch to light
     document.documentElement.setAttribute('data-theme', t);
   })();
 </script>
@@ -545,9 +544,9 @@
         </p>
         <p class="hero-statement rise" style="--i:3">I study how <em>Arabidopsis</em> plants recover from heat stress and remember it days later, and how nonsense-mediated decay and alternative splicing help them reset once the heat has passed.</p>
         <div class="hero-actions rise" style="--i:4">
-          <a class="btn btn-solid" href="./cv.pdf" download="CV_ABBAS.pdf">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8.5M4.5 7 8 10.5 11.5 7M3 13.5h10"/></svg>
-            Download CV
+          <a class="btn btn-solid" href="./cv.pdf" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.5 8S4 3.5 8 3.5 14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8Z"/><circle cx="8" cy="8" r="2"/></svg>
+            View CV
           </a>
           <a class="btn btn-ghost" href="#contact">Get in touch</a>
           <span class="status">Open to postdoctoral opportunities</span>
@@ -613,7 +612,7 @@
       <div class="about-grid">
         <div class="prose reveal">
           <p>I'm a Plant Molecular Biologist with 4+ years of experience in post-transcriptional gene regulation, RNA biology and plant stress responses. I'm currently working with Dr. Tibor Csorba in the Plant Stress Biology Group, Genetics and Biotechnology Institute, MATE University in Gödöllő, Hungary. My PhD work sits at the intersection of RNA surveillance (NMD pathway), alternative splicing, heat stress recovery and thermomemory in plants.</p>
-          <p>My work has been published in <span class="venue">The Plant Cell</span> and <span class="venue">The Plant Journal</span> on transcription fidelity, stress responses, and gene regulation in plants, with additional first-author research work submitted to <span class="venue">Plant and Cell Physiology</span>.</p>
+          <p>My work has been published in <span class="venue">The Plant Cell</span> and <span class="venue">The Plant Journal</span> on transcription fidelity, stress responses, and gene regulation in plants, with additional first-author research work submitted.</p>
           <p>Beyond academia, the regulatory principles I work on (including RNA quality control, stress-responsive gene networks, isoform-level switches) translate directly into questions relevant to crop resilience, trait engineering and RNA-based biotechnology.</p>
           <p>I'm currently seeking postdoctoral opportunities in RNA biology, plant stress responses, or gene regulation, where I can continue pushing at the interface of transcriptomics, molecular genetics and stress biology.</p>
           <p class="closing">I believe science, at its best, is service to humankind!</p>
@@ -641,13 +640,13 @@
         <article class="work reveal">
           <div class="work-meta">
             <span class="work-type">Journal article</span>
-            <span class="work-venue">Plant and Cell Physiology</span>
-            Submitted 2026
+            <span class="work-venue">Manuscript submitted</span>
+            2026
           </div>
           <div>
-            <h3>Nonsense-mediated decay promotes heat stress recovery independently of HsfA2/HsfA3 in <em>Arabidopsis</em></h3>
+            <h3>Nonsense-Mediated mRNA Decay ambivalently regulates heat stress memory</h3>
             <p>Heat stress triggers alternative splicing of HSFA2, the master regulator of the heat shock response, generating several mRNA isoforms whose balance shifts through acclimation and recovery. This work maps how nonsense-mediated decay governs which of those isoforms accumulate, and what that means for how a plant remembers a heat event days after it ends.</p>
-            <div class="more" id="more-1"><div><p>The central finding is that NMD promotes recovery from heat stress through a route independent of both HsfA2 and HsfA3, so the decay machinery does more than clear faulty transcripts. It actively helps the plant reset. In NMD-deficient backgrounds the isoform patterns depart from what current AS-NMD models predict, pointing to further layers of regulation still to be described.</p></div></div>
+            <div class="more" id="more-1"><div><p>The central finding is that NMD shapes heat stress memory in more than one direction, so the decay machinery does more than clear faulty transcripts. It actively helps the plant reset. In NMD-deficient backgrounds the isoform patterns depart from what current AS-NMD models predict, pointing to further layers of regulation still to be described.</p></div></div>
             <div class="work-actions">
               <button class="text-btn" type="button" aria-expanded="false" aria-controls="more-1">Read more <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5"/></svg></button>
             </div>
@@ -725,8 +724,8 @@
         <h3>Journal articles</h3>
         <ul class="pub-list">
           <li class="pub">
-            <span class="pub-text"><span class="self">Abbas, S.H.</span>, Darkó, É., Erős, T., Csorba, T. (2026). Nonsense-mediated decay promotes heat stress recovery independently of HsfA2/HsfA3 in <em>Arabidopsis</em>.</span>
-            <div class="pub-foot"><span class="pub-meta">Manuscript submitted to <span class="venue">Plant and Cell Physiology</span></span><button class="copy-cite" type="button">Copy citation</button></div>
+            <span class="pub-text"><span class="self">Abbas, S.H.</span>, Szaker, H.M., Darkó, É., Erős, T., Silhavy, D., Csorba, T. (2026). Nonsense-Mediated mRNA Decay ambivalently regulates heat stress memory.</span>
+            <div class="pub-foot"><span class="pub-meta">Manuscript submitted</span><button class="copy-cite" type="button">Copy citation</button></div>
           </li>
           <li class="pub">
             <span class="pub-text">Szaker, H.M.*, Verma, R.*, Szádeczky-Kardoss, I., Gál, N., <span class="self">Abbas, S.H.</span>, Darkó, É., Pettkó-Szandtner, A., Silhavy, D., Csorba, T. (2025). Transcription fidelity and control of alternative splicing contribute to heat stress survival in <em>Arabidopsis</em>. <span class="venue">The Plant Cell</span>, 37(11), koaf256.</span>
@@ -925,9 +924,11 @@
 
   /* ---------- Theme toggle ---------- */
   var themeBtn = document.querySelector('.theme-toggle');
+  var themeMeta = document.getElementById('theme-color-meta');
   function setThemeLabel() {
     var dark = doc.getAttribute('data-theme') === 'dark';
     themeBtn.setAttribute('aria-label', dark ? 'Switch to light theme' : 'Switch to dark theme');
+    if (themeMeta) themeMeta.setAttribute('content', dark ? '#12160C' : '#FFFFFF');
   }
   setThemeLabel();
   themeBtn.addEventListener('click', function () {
